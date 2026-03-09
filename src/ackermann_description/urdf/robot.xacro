@@ -350,7 +350,7 @@
     <!-- ================================ -->
     <!-- LIDAR LINK -->
     <!-- ================================ -->
-    <link name="laser_link">
+    <link name="laser">
         <inertial>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <mass value="${lidar_mass}" />
@@ -382,7 +382,7 @@
 
     <joint name="laser_joint" type="fixed">
         <parent link="chassis_link" />
-        <child link="laser_link" />
+        <child link="laser" />
         <!-- LiDAR at front edge + its radius, sitting on top surface -->
         <origin xyz=" 0.1 0.0 ${body_height/2 + lidar_height/2}" rpy="0 0 0" />
     </joint>
