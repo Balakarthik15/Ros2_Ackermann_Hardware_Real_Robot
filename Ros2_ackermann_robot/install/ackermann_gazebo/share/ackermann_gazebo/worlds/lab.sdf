@@ -1,0 +1,594 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="computer_lab">
+
+    <!-- ================= SCENE ================= -->
+    <scene>
+      <ambient>0.6 0.6 0.6 1</ambient>
+      <background>0.95 0.95 0.95 1</background>
+    </scene>
+
+    <!-- ================= LIGHTS ================= -->
+
+    <!-- Sun -->
+    <light name="sun" type="directional">
+      <pose>0 0 10 0 0 0</pose>
+      <direction>-0.5 0.1 -1</direction>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+    </light>
+
+    <!-- Indoor ceiling light -->
+    <light name="room_light" type="point">
+      <pose>0 0 6 0 0 0</pose>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>20</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+      </attenuation>
+    </light>
+
+    <!-- ================= GROUND ================= -->
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>50 50</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>50 50</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ================= WALLS ================= -->
+
+    <!-- Front -->
+    <model name="wall_front">
+      <static>true</static>
+      <pose>0 4 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>10 0.2 2.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10 0.2 2.5</size></box></geometry>
+          <material><diffuse>0.7 0.7 0.7 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Back -->
+    <model name="wall_back">
+      <static>true</static>
+      <pose>0 -4 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>10 0.2 2.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>10 0.2 2.5</size></box></geometry>
+          <material><diffuse>0.7 0.7 0.7 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Left -->
+    <model name="wall_left">
+      <static>true</static>
+      <pose>-5 0 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.2 8 2.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.2 8 2.5</size></box></geometry>
+          <material><diffuse>0.7 0.7 0.7 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Right -->
+    <model name="wall_right">
+      <static>true</static>
+      <pose>5 0 1.25 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.2 8 2.5</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.2 8 2.5</size></box></geometry>
+          <material><diffuse>0.7 0.7 0.7 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ================= TABLES ================= -->
+
+    <model name="table_1">
+      <static>true</static>
+      <pose>-2 2 0 0 0 0</pose>
+
+      <link name="link">
+
+        <!-- ================= TABLE TOP ================= -->
+        <collision name="top_collision">
+          <!-- Top thickness = 0.05 m, height = 0.75 m -->
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry>
+            <box><size>1.5 0.8 0.05</size></box>
+          </geometry>
+        </collision>
+
+        <visual name="top_visual">
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry>
+            <box><size>1.5 0.8 0.05</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.6 0.4 0.25 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- ================= TABLE LEGS ================= -->
+        <!-- Leg height: 0.7 m (touches ground) -->
+        <!-- Leg thickness: 5 cm -->
+
+        <!-- Front-left -->
+        <collision name="leg_fl_col">
+          <pose>0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_fl_vis">
+          <pose>0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Front-right -->
+        <collision name="leg_fr_col">
+          <pose>0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_fr_vis">
+          <pose>0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Back-left -->
+        <collision name="leg_bl_col">
+          <pose>-0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_bl_vis">
+          <pose>-0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Back-right -->
+        <collision name="leg_br_col">
+          <pose>-0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_br_vis">
+          <pose>-0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+
+        <!-- ================= TABLES ================= -->
+
+    <model name="table_2">
+      <static>true</static>
+      <pose>2 2 0 0 0 0</pose>
+
+      <link name="link">
+
+        <!-- ================= TABLE TOP ================= -->
+        <collision name="top_collision">
+          <!-- Top thickness = 0.05 m, height = 0.75 m -->
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry>
+            <box><size>1.5 0.8 0.05</size></box>
+          </geometry>
+        </collision>
+
+        <visual name="top_visual">
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry>
+            <box><size>1.5 0.8 0.05</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.6 0.4 0.25 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- ================= TABLE LEGS ================= -->
+        <!-- Leg height: 0.7 m (touches ground) -->
+        <!-- Leg thickness: 5 cm -->
+
+        <!-- Front-left -->
+        <collision name="leg_fl_col">
+          <pose>0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_fl_vis">
+          <pose>0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Front-right -->
+        <collision name="leg_fr_col">
+          <pose>0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_fr_vis">
+          <pose>0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Back-left -->
+        <collision name="leg_bl_col">
+          <pose>-0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_bl_vis">
+          <pose>-0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Back-right -->
+        <collision name="leg_br_col">
+          <pose>-0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_br_vis">
+          <pose>-0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+
+        <!-- ================= TABLES ================= -->
+
+    <model name="table_3">
+      <static>true</static>
+      <pose>-2 -2 0 0 0 0</pose>
+
+      <link name="link">
+
+        <!-- ================= TABLE TOP ================= -->
+        <collision name="top_collision">
+          <!-- Top thickness = 0.05 m, height = 0.75 m -->
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry>
+            <box><size>1.5 0.8 0.05</size></box>
+          </geometry>
+        </collision>
+
+        <visual name="top_visual">
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry>
+            <box><size>1.5 0.8 0.05</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.6 0.4 0.25 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- ================= TABLE LEGS ================= -->
+        <!-- Leg height: 0.7 m (touches ground) -->
+        <!-- Leg thickness: 5 cm -->
+
+        <!-- Front-left -->
+        <collision name="leg_fl_col">
+          <pose>0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_fl_vis">
+          <pose>0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Front-right -->
+        <collision name="leg_fr_col">
+          <pose>0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_fr_vis">
+          <pose>0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Back-left -->
+        <collision name="leg_bl_col">
+          <pose>-0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_bl_vis">
+          <pose>-0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Back-right -->
+        <collision name="leg_br_col">
+          <pose>-0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_br_vis">
+          <pose>-0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+
+        <!-- ================= TABLES ================= -->
+
+    <model name="table_4">
+      <static>true</static>
+      <pose>2 -2 0 0 0 0</pose>
+
+      <link name="link">
+
+        <!-- ================= TABLE TOP ================= -->
+        <collision name="top_collision">
+          <!-- Top thickness = 0.05 m, height = 0.75 m -->
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry>
+            <box><size>1.5 0.8 0.05</size></box>
+          </geometry>
+        </collision>
+
+        <visual name="top_visual">
+          <pose>0 0 0.75 0 0 0</pose>
+          <geometry>
+            <box><size>1.5 0.8 0.05</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.6 0.4 0.25 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- ================= TABLE LEGS ================= -->
+        <!-- Leg height: 0.7 m (touches ground) -->
+        <!-- Leg thickness: 5 cm -->
+
+        <!-- Front-left -->
+        <collision name="leg_fl_col">
+          <pose>0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_fl_vis">
+          <pose>0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Front-right -->
+        <collision name="leg_fr_col">
+          <pose>0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_fr_vis">
+          <pose>0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Back-left -->
+        <collision name="leg_bl_col">
+          <pose>-0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_bl_vis">
+          <pose>-0.55 0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Back-right -->
+        <collision name="leg_br_col">
+          <pose>-0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+        </collision>
+        <visual name="leg_br_vis">
+          <pose>-0.55 -0.25 0.35 0 0 0</pose>
+          <geometry>
+            <box><size>0.20 0.20 0.7</size></box>
+          </geometry>
+          <material>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+
+    <!-- ================= CHAIRS ================= -->
+
+    <model name="chair_1">
+      <static>true</static>
+      <pose>-2 1.2 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.4 0.4 0.8</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.4 0.4 0.8</size></box></geometry>
+          <material><diffuse>0.3 0.3 0.3 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="chair_2">
+      <static>true</static>
+      <pose>2 1.2 0.4 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.4 0.4 0.8</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.4 0.4 0.8</size></box></geometry>
+          <material><diffuse>0.3 0.3 0.3 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- ================= PARKING MARKINGS ================= -->
+
+    <model name="parking_markings">
+      <static>true</static>
+      <pose>4.2 0 0 0 0 1.57</pose>
+      <link name="link">
+
+        <visual name="left">
+          <pose>-0.25 0.35 0.01 0 0 0</pose>
+          <geometry><box><size>0.02 0.7 0.02</size></box></geometry>
+          <material><diffuse>1 1 1 1</diffuse></material>
+        </visual>
+
+        <visual name="right">
+          <pose>0.25 0.35 0.01 0 0 0</pose>
+          <geometry><box><size>0.02 0.7 0.02</size></box></geometry>
+          <material><diffuse>1 1 1 1</diffuse></material>
+        </visual>
+
+        <visual name="front">
+          <pose>0 0 0.01 0 0 0</pose>
+          <geometry><box><size>0.5 0.02 0.02</size></box></geometry>
+          <material><diffuse>1 1 1 1</diffuse></material>
+        </visual>
+
+      </link>
+    </model>
+
+  </world>
+</sdf>

@@ -1,0 +1,2 @@
+[console_scripts]
+keyboard_teleop = ackermann_teleop.keyboard_teleop:main

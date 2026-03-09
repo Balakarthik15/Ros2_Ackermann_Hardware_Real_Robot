@@ -1,0 +1,44 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100 # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    ackermann_steering_controller:
+      type: ackermann_steering_controller/AckermannSteeringController
+
+
+ackermann_steering_controller:
+  ros__parameters:
+
+    enable_odom_tf: true
+
+    base_frame_id: base_footprint
+    odom_frame_id: odom
+
+    traction_joints_names:
+
+      - re_left_wheel_joint
+
+      - re_right_wheel_joint
+     
+    
+
+    steering_joints_names:
+
+      - fr_left_steer_joint
+      - fr_right_steer_joint
+      
+   
+
+      # Required vehicle geometry values
+    traction_track_width: 0.280       # Distance between rear wheels (meters)
+    wheelbase: 0.285                 # Distance center of rear to center of front (meters)
+    traction_wheels_radius: 0.055     # Radius of rear drive wheels (meters)
+
+    # Optional:
+    steering_track_width: 0.280      # If omitted, will use traction_track_width
+
+
+    publish_rate: 50.0

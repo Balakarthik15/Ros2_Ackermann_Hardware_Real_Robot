@@ -1,0 +1,329 @@
+[0.050s] Invoking command in '/home/pi/Ros2_ackermann_robot/build/vesc_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/Ros2_ackermann_robot/install/ackermann_hardware:/home/pi/Ros2_ackermann_robot/install/ackermann_teleop:/home/pi/ros2_ws/install/drive:/home/pi/ros2_ws/install/ackermann_vesc_adapter:/home/pi/ros2_ws/install/ackermann_teleop:/opt/ros/kilted DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/pi/Ros2_ackermann_robot/src/vesc/vesc_msgs -DCMAKE_INSTALL_PREFIX=/home/pi/Ros2_ackermann_robot/install/vesc_msgs
+[0.238s] -- The C compiler identification is GNU 13.3.0
+[0.410s] -- The CXX compiler identification is GNU 13.3.0
+[0.481s] -- Detecting C compiler ABI info
+[0.861s] -- Detecting C compiler ABI info - done
+[0.881s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.883s] -- Detecting C compile features
+[0.884s] -- Detecting C compile features - done
+[0.909s] -- Detecting CXX compiler ABI info
+[1.271s] -- Detecting CXX compiler ABI info - done
+[1.293s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.293s] -- Detecting CXX compile features
+[1.295s] -- Detecting CXX compile features - done
+[1.306s] -- Found ament_cmake_auto: 2.7.3 (/opt/ros/kilted/share/ament_cmake_auto/cmake)
+[1.865s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[2.431s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.563s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.688s] -- Found rosidl_adapter: 4.9.5 (/opt/ros/kilted/share/rosidl_adapter/cmake)
+[3.978s] -- Found ament_cmake_ros_core: 0.14.3 (/opt/ros/kilted/share/ament_cmake_ros_core/cmake)
+[4.889s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[6.107s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[6.888s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[6.991s] -- Found ament_lint_auto: 0.19.2 (/opt/ros/kilted/share/ament_lint_auto/cmake)
+[7.071s] -- Added test 'copyright' to check source files copyright and LICENSE
+[7.074s] -- Added test 'lint_cmake' to check CMake code style
+[7.076s] -- Added test 'xmllint' to check XML markup files
+[7.083s] -- Configuring done (7.0s)
+[7.153s] -- Generating done (0.1s)
+[7.172s] -- Build files have been written to: /home/pi/Ros2_ackermann_robot/build/vesc_msgs
+[7.193s] Invoked command in '/home/pi/Ros2_ackermann_robot/build/vesc_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/Ros2_ackermann_robot/install/ackermann_hardware:/home/pi/Ros2_ackermann_robot/install/ackermann_teleop:/home/pi/ros2_ws/install/drive:/home/pi/ros2_ws/install/ackermann_vesc_adapter:/home/pi/ros2_ws/install/ackermann_teleop:/opt/ros/kilted DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/pi/Ros2_ackermann_robot/src/vesc/vesc_msgs -DCMAKE_INSTALL_PREFIX=/home/pi/Ros2_ackermann_robot/install/vesc_msgs
+[7.195s] Invoking command in '/home/pi/Ros2_ackermann_robot/build/vesc_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/Ros2_ackermann_robot/install/ackermann_hardware:/home/pi/Ros2_ackermann_robot/install/ackermann_teleop:/home/pi/ros2_ws/install/drive:/home/pi/ros2_ws/install/ackermann_vesc_adapter:/home/pi/ros2_ws/install/ackermann_teleop:/opt/ros/kilted DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/pi/Ros2_ackermann_robot/build/vesc_msgs -- -j4 -l4
+[7.312s] [  1%] [34m[1mGenerating type hashes for ROS interfaces[0m
+[7.333s] [  1%] Built target ament_cmake_python_copy_vesc_msgs
+[7.686s] running egg_info
+[7.687s] creating vesc_msgs.egg-info
+[7.720s] writing vesc_msgs.egg-info/PKG-INFO
+[7.720s] writing dependency_links to vesc_msgs.egg-info/dependency_links.txt
+[7.720s] writing top-level names to vesc_msgs.egg-info/top_level.txt
+[7.720s] writing manifest file 'vesc_msgs.egg-info/SOURCES.txt'
+[7.811s] reading manifest file 'vesc_msgs.egg-info/SOURCES.txt'
+[7.812s] writing manifest file 'vesc_msgs.egg-info/SOURCES.txt'
+[7.897s] [  1%] Built target ament_cmake_python_build_vesc_msgs_egg
+[7.965s] [  1%] Built target vesc_msgs__rosidl_generator_type_description
+[7.987s] [  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[8.010s] [  4%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[8.966s] [  4%] Built target vesc_msgs__cpp
+[9.092s] [  9%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_state__functions.c.o[0m
+[9.095s] [  9%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_state_stamped__description.c.o[0m
+[9.095s] [ 10%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_state__description.c.o[0m
+[9.095s] [ 10%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_state__type_support.c.o[0m
+[9.178s] [ 12%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_state_stamped__functions.c.o[0m
+[9.191s] [ 14%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_state_stamped__type_support.c.o[0m
+[9.204s] [ 15%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_imu__description.c.o[0m
+[9.211s] [ 17%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_imu__functions.c.o[0m
+[9.270s] [ 18%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_imu__type_support.c.o[0m
+[9.302s] [ 20%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_imu_stamped__description.c.o[0m
+[9.311s] [ 21%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_imu_stamped__functions.c.o[0m
+[9.335s] [ 23%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_c.dir/rosidl_generator_c/vesc_msgs/msg/detail/vesc_imu_stamped__type_support.c.o[0m
+[9.422s] [ 25%] [32m[1mLinking C shared library libvesc_msgs__rosidl_generator_c.so[0m
+[9.527s] [ 25%] Built target vesc_msgs__rosidl_generator_c
+[9.558s] [ 28%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[9.560s] [ 28%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[9.561s] [ 29%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[9.563s] [ 31%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[10.422s] [ 32%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/vesc_msgs/msg/vesc_state__type_support.cpp.o[0m
+[10.456s] [ 34%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/vesc_msgs/msg/vesc_state__type_support.cpp.o[0m
+[10.574s] [ 35%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/vesc_msgs/msg/vesc_state_stamped__type_support.cpp.o[0m
+[10.659s] [ 37%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/vesc_msgs/msg/detail/vesc_state__type_support.c.o[0m
+[10.678s] [ 39%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/vesc_msgs/msg/vesc_imu__type_support.cpp.o[0m
+[10.751s] [ 40%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/vesc_msgs/msg/detail/vesc_state_stamped__type_support.c.o[0m
+[10.785s] [ 42%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/vesc_msgs/msg/vesc_imu_stamped__type_support.cpp.o[0m
+[10.817s] [ 43%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/vesc_msgs/msg/detail/vesc_state__type_support_c.cpp.o[0m
+[10.858s] [ 45%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/vesc_msgs/msg/detail/vesc_imu__type_support.c.o[0m
+[10.887s] [ 46%] [32m[1mLinking CXX shared library libvesc_msgs__rosidl_typesupport_c.so[0m
+[10.956s] [ 48%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/vesc_msgs/msg/detail/vesc_imu_stamped__type_support.c.o[0m
+[11.012s] [ 48%] Built target vesc_msgs__rosidl_typesupport_c
+[11.037s] [ 50%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/vesc_msgs/msg/detail/vesc_state_stamped__type_support_c.cpp.o[0m
+[11.054s] [ 51%] [32m[1mLinking C shared library libvesc_msgs__rosidl_typesupport_introspection_c.so[0m
+[11.144s] [ 51%] Built target vesc_msgs__rosidl_typesupport_introspection_c
+[11.177s] [ 53%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/vesc_msgs/msg/detail/vesc_imu__type_support_c.cpp.o[0m
+[11.210s] [ 54%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/vesc_msgs/msg/vesc_state_stamped__type_support.cpp.o[0m
+[11.934s] [ 56%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/vesc_msgs/msg/vesc_imu__type_support.cpp.o[0m
+[11.969s] [ 57%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[12.059s] [ 59%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/vesc_msgs/msg/detail/vesc_imu_stamped__type_support_c.cpp.o[0m
+[12.206s] [ 60%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/vesc_msgs/msg/vesc_imu_stamped__type_support.cpp.o[0m
+[12.639s] [ 62%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[12.900s] [ 64%] [32m[1mLinking CXX shared library libvesc_msgs__rosidl_typesupport_cpp.so[0m
+[13.022s] [ 64%] Built target vesc_msgs__rosidl_typesupport_cpp
+[13.027s] [ 65%] [32m[1mLinking CXX shared library libvesc_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[13.150s] [ 65%] Built target vesc_msgs__rosidl_typesupport_fastrtps_c
+[13.171s] [ 68%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/vesc_msgs/msg/detail/dds_fastrtps/vesc_state_stamped__type_support.cpp.o[0m
+[13.175s] [ 68%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/vesc_msgs/msg/detail/dds_fastrtps/vesc_state__type_support.cpp.o[0m
+[13.180s] [ 70%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/vesc_msgs/msg/detail/dds_fastrtps/vesc_imu__type_support.cpp.o[0m
+[13.767s] [ 71%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/vesc_msgs/msg/detail/vesc_state__type_support.cpp.o[0m
+[14.248s] [ 73%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/vesc_msgs/msg/detail/vesc_state_stamped__type_support.cpp.o[0m
+[14.266s] [ 75%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/vesc_msgs/msg/detail/dds_fastrtps/vesc_imu_stamped__type_support.cpp.o[0m
+[14.319s] [ 76%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/vesc_msgs/msg/detail/vesc_imu__type_support.cpp.o[0m
+[14.489s] [ 78%] [32mBuilding CXX object CMakeFiles/vesc_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/vesc_msgs/msg/detail/vesc_imu_stamped__type_support.cpp.o[0m
+[15.145s] [ 79%] [32m[1mLinking CXX shared library libvesc_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[15.254s] [ 81%] [32m[1mLinking CXX shared library libvesc_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[15.326s] [ 81%] Built target vesc_msgs__rosidl_typesupport_introspection_cpp
+[15.369s] [ 81%] Built target vesc_msgs__rosidl_typesupport_fastrtps_cpp
+[15.419s] [ 81%] Built target vesc_msgs
+[15.466s] [ 82%] [34m[1mGenerating Python code for ROS interfaces[0m
+[16.722s] [ 82%] Built target vesc_msgs__py
+[16.768s] [ 87%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_py.dir/rosidl_generator_py/vesc_msgs/msg/_vesc_imu_stamped_s.c.o[0m
+[16.770s] [ 89%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_py.dir/rosidl_generator_py/vesc_msgs/msg/_vesc_imu_s.c.o[0m
+[16.771s] [ 89%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_py.dir/rosidl_generator_py/vesc_msgs/msg/_vesc_state_stamped_s.c.o[0m
+[16.771s] [ 89%] [32mBuilding C object CMakeFiles/vesc_msgs__rosidl_generator_py.dir/rosidl_generator_py/vesc_msgs/msg/_vesc_state_s.c.o[0m
+[17.071s] [ 90%] [32m[1mLinking C shared library libvesc_msgs__rosidl_generator_py.so[0m
+[17.173s] [ 90%] Built target vesc_msgs__rosidl_generator_py
+[17.223s] [ 95%] [32mBuilding C object CMakeFiles/vesc_msgs_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/vesc_msgs/_vesc_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[17.223s] [ 95%] [32mBuilding C object CMakeFiles/vesc_msgs_s__rosidl_typesupport_c.dir/rosidl_generator_py/vesc_msgs/_vesc_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[17.224s] [ 95%] [32mBuilding C object CMakeFiles/vesc_msgs_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/vesc_msgs/_vesc_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[17.438s] [ 96%] [32m[1mLinking C shared module rosidl_generator_py/vesc_msgs/vesc_msgs_s__rosidl_typesupport_c.so[0m
+[17.440s] [ 98%] [32m[1mLinking C shared module rosidl_generator_py/vesc_msgs/vesc_msgs_s__rosidl_typesupport_introspection_c.so[0m
+[17.444s] [100%] [32m[1mLinking C shared module rosidl_generator_py/vesc_msgs/vesc_msgs_s__rosidl_typesupport_fastrtps_c.so[0m
+[17.516s] [100%] Built target vesc_msgs_s__rosidl_typesupport_c
+[17.519s] [100%] Built target vesc_msgs_s__rosidl_typesupport_introspection_c
+[17.522s] [100%] Built target vesc_msgs_s__rosidl_typesupport_fastrtps_c
+[17.548s] Invoked command in '/home/pi/Ros2_ackermann_robot/build/vesc_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/Ros2_ackermann_robot/install/ackermann_hardware:/home/pi/Ros2_ackermann_robot/install/ackermann_teleop:/home/pi/ros2_ws/install/drive:/home/pi/ros2_ws/install/ackermann_vesc_adapter:/home/pi/ros2_ws/install/ackermann_teleop:/opt/ros/kilted DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/pi/Ros2_ackermann_robot/build/vesc_msgs -- -j4 -l4
+[17.550s] Invoking command in '/home/pi/Ros2_ackermann_robot/build/vesc_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/Ros2_ackermann_robot/install/ackermann_hardware:/home/pi/Ros2_ackermann_robot/install/ackermann_teleop:/home/pi/ros2_ws/install/drive:/home/pi/ros2_ws/install/ackermann_vesc_adapter:/home/pi/ros2_ws/install/ackermann_teleop:/opt/ros/kilted DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/pi/Ros2_ackermann_robot/build/vesc_msgs
+[17.570s] -- Install configuration: ""
+[17.570s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/ament_index/resource_index/rosidl_interfaces/vesc_msgs
+[17.570s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescState.json
+[17.571s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescStateStamped.json
+[17.571s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescImu.json
+[17.571s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescImuStamped.json
+[17.572s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs
+[17.572s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg
+[17.572s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/vesc_state.h
+[17.572s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/vesc_state_stamped.h
+[17.572s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/vesc_imu_stamped.h
+[17.573s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/rosidl_generator_c__visibility_control.h
+[17.573s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail
+[17.573s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__functions.h
+[17.573s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__type_support.h
+[17.573s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__functions.c
+[17.573s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__functions.c
+[17.573s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__type_support.h
+[17.574s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__functions.h
+[17.574s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__type_support.c
+[17.574s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__struct.h
+[17.574s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__struct.h
+[17.574s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__description.c
+[17.574s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__type_support.c
+[17.574s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__description.c
+[17.575s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__type_support.h
+[17.575s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__type_support.c
+[17.575s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__struct.h
+[17.575s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__description.c
+[17.575s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__type_support.h
+[17.575s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__struct.h
+[17.575s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__functions.c
+[17.576s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__type_support.c
+[17.576s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__description.c
+[17.576s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__functions.h
+[17.576s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__functions.c
+[17.576s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__functions.h
+[17.576s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/vesc_imu.h
+[17.577s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/environment/library_path.sh
+[17.577s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/environment/library_path.dsv
+[17.577s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_generator_c.so
+[17.578s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_generator_c.so" to ""
+[17.578s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs
+[17.578s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg
+[17.578s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[17.578s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail
+[17.578s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__rosidl_typesupport_fastrtps_c.h
+[17.579s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__rosidl_typesupport_fastrtps_c.h
+[17.579s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__rosidl_typesupport_fastrtps_c.h
+[17.579s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__rosidl_typesupport_fastrtps_c.h
+[17.579s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_fastrtps_c.so
+[17.580s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[17.580s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs
+[17.580s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg
+[17.580s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[17.580s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail
+[17.580s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__rosidl_typesupport_introspection_c.h
+[17.580s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__type_support.c
+[17.580s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__rosidl_typesupport_introspection_c.h
+[17.581s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__rosidl_typesupport_introspection_c.h
+[17.581s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__type_support.c
+[17.581s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__type_support.c
+[17.581s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__rosidl_typesupport_introspection_c.h
+[17.581s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__type_support.c
+[17.581s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_introspection_c.so
+[17.582s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_introspection_c.so" to ""
+[17.582s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_c.so
+[17.583s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_c.so" to ""
+[17.583s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs
+[17.583s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg
+[17.583s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[17.583s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/vesc_state.hpp
+[17.583s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/vesc_imu_stamped.hpp
+[17.584s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/vesc_imu.hpp
+[17.584s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/vesc_state_stamped.hpp
+[17.584s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail
+[17.584s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__traits.hpp
+[17.584s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__struct.hpp
+[17.584s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__traits.hpp
+[17.584s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__type_support.hpp
+[17.584s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__struct.hpp
+[17.584s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__builder.hpp
+[17.584s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__builder.hpp
+[17.585s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__traits.hpp
+[17.585s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__struct.hpp
+[17.585s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__builder.hpp
+[17.585s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__builder.hpp
+[17.585s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__type_support.hpp
+[17.585s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__traits.hpp
+[17.585s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__struct.hpp
+[17.586s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__type_support.hpp
+[17.586s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__type_support.hpp
+[17.586s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs
+[17.586s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg
+[17.586s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[17.586s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail
+[17.586s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__rosidl_typesupport_fastrtps_cpp.hpp
+[17.586s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__rosidl_typesupport_fastrtps_cpp.hpp
+[17.587s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__rosidl_typesupport_fastrtps_cpp.hpp
+[17.587s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/dds_fastrtps
+[17.587s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__rosidl_typesupport_fastrtps_cpp.hpp
+[17.587s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_fastrtps_cpp.so
+[17.588s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[17.588s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs
+[17.588s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg
+[17.588s] -- Up-to-date: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail
+[17.588s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__type_support.cpp
+[17.588s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__type_support.cpp
+[17.589s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__type_support.cpp
+[17.589s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu_stamped__rosidl_typesupport_introspection_cpp.hpp
+[17.589s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__rosidl_typesupport_introspection_cpp.hpp
+[17.589s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_imu__rosidl_typesupport_introspection_cpp.hpp
+[17.589s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state_stamped__type_support.cpp
+[17.589s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/include/vesc_msgs/vesc_msgs/msg/detail/vesc_state__rosidl_typesupport_introspection_cpp.hpp
+[17.589s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_introspection_cpp.so
+[17.590s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[17.590s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_cpp.so
+[17.591s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_typesupport_cpp.so" to ""
+[17.591s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/environment/pythonpath.sh
+[17.591s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/environment/pythonpath.dsv
+[17.591s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs-1.1.0-py3.12.egg-info
+[17.592s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs-1.1.0-py3.12.egg-info/dependency_links.txt
+[17.592s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs-1.1.0-py3.12.egg-info/top_level.txt
+[17.592s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs-1.1.0-py3.12.egg-info/SOURCES.txt
+[17.592s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs-1.1.0-py3.12.egg-info/PKG-INFO
+[17.592s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs
+[17.592s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/_vesc_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[17.593s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/_vesc_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[17.593s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg
+[17.593s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_imu_s.c
+[17.593s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_imu_stamped.py
+[17.593s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_state_s.c
+[17.593s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_state.py
+[17.593s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/__init__.py
+[17.594s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_imu_stamped_s.c
+[17.594s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_state_stamped.py
+[17.594s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_state_stamped_s.c
+[17.594s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_imu.py
+[17.594s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/_vesc_msgs_s.ep.rosidl_typesupport_c.c
+[17.594s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/__init__.py
+[17.594s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/vesc_msgs_s__rosidl_typesupport_introspection_c.so
+[17.595s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/vesc_msgs_s__rosidl_typesupport_fastrtps_c.so
+[17.595s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/vesc_msgs_s__rosidl_typesupport_c.so
+[17.667s] Listing '/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs'...
+[17.668s] Compiling '/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/__init__.py'...
+[17.668s] Listing '/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg'...
+[17.668s] Compiling '/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/__init__.py'...
+[17.668s] Compiling '/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_imu.py'...
+[17.668s] Compiling '/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_imu_stamped.py'...
+[17.668s] Compiling '/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_state.py'...
+[17.668s] Compiling '/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/msg/_vesc_state_stamped.py'...
+[17.680s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/vesc_msgs_s__rosidl_typesupport_fastrtps_c.so
+[17.680s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/vesc_msgs_s__rosidl_typesupport_fastrtps_c.so" to ""
+[17.681s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/vesc_msgs_s__rosidl_typesupport_introspection_c.so
+[17.681s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/vesc_msgs_s__rosidl_typesupport_introspection_c.so" to ""
+[17.682s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/vesc_msgs_s__rosidl_typesupport_c.so
+[17.682s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/python3.12/site-packages/vesc_msgs/vesc_msgs_s__rosidl_typesupport_c.so" to ""
+[17.682s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_generator_py.so
+[17.683s] -- Set non-toolchain portion of runtime path of "/home/pi/Ros2_ackermann_robot/install/vesc_msgs/lib/libvesc_msgs__rosidl_generator_py.so" to ""
+[17.683s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescState.idl
+[17.683s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescStateStamped.idl
+[17.683s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescImu.idl
+[17.684s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescImuStamped.idl
+[17.684s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescState.msg
+[17.684s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescStateStamped.msg
+[17.684s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescImu.msg
+[17.684s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/msg/VescImuStamped.msg
+[17.685s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/ament_index/resource_index/package_run_dependencies/vesc_msgs
+[17.685s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/ament_index/resource_index/parent_prefix_path/vesc_msgs
+[17.685s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/environment/ament_prefix_path.sh
+[17.685s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/environment/ament_prefix_path.dsv
+[17.685s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/environment/path.sh
+[17.686s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/environment/path.dsv
+[17.686s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/local_setup.bash
+[17.686s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/local_setup.sh
+[17.686s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/local_setup.zsh
+[17.686s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/local_setup.dsv
+[17.686s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/package.dsv
+[17.687s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/ament_index/resource_index/packages/vesc_msgs
+[17.687s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/export_vesc_msgs__rosidl_generator_cExport.cmake
+[17.687s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/export_vesc_msgs__rosidl_generator_cExport-noconfig.cmake
+[17.687s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/export_vesc_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[17.688s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/export_vesc_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[17.688s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgs__rosidl_typesupport_introspection_cExport.cmake
+[17.688s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[17.688s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgs__rosidl_typesupport_cExport.cmake
+[17.689s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[17.689s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/export_vesc_msgs__rosidl_generator_cppExport.cmake
+[17.689s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/export_vesc_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[17.689s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/export_vesc_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[17.689s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[17.690s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[17.690s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgs__rosidl_typesupport_cppExport.cmake
+[17.690s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[17.690s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/export_vesc_msgs__rosidl_generator_pyExport.cmake
+[17.691s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/export_vesc_msgs__rosidl_generator_pyExport-noconfig.cmake
+[17.691s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/rosidl_cmake-extras.cmake
+[17.691s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[17.691s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[17.691s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[17.692s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[17.692s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[17.692s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[17.692s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgsConfig.cmake
+[17.692s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/cmake/vesc_msgsConfig-version.cmake
+[17.693s] -- Installing: /home/pi/Ros2_ackermann_robot/install/vesc_msgs/share/vesc_msgs/package.xml
+[17.697s] Invoked command in '/home/pi/Ros2_ackermann_robot/build/vesc_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/pi/Ros2_ackermann_robot/install/ackermann_hardware:/home/pi/Ros2_ackermann_robot/install/ackermann_teleop:/home/pi/ros2_ws/install/drive:/home/pi/ros2_ws/install/ackermann_vesc_adapter:/home/pi/ros2_ws/install/ackermann_teleop:/opt/ros/kilted DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/pi/Ros2_ackermann_robot/build/vesc_msgs

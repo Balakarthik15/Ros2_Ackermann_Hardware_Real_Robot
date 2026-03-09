@@ -1,0 +1,15 @@
+{
+  "package_name": "vesc_msgs",
+  "output_dir": "/home/pi/Ros2_ackermann_robot/build/vesc_msgs/rosidl_generator_type_description/vesc_msgs",
+  "idl_tuples": [
+    "/home/pi/Ros2_ackermann_robot/build/vesc_msgs/rosidl_adapter/vesc_msgs:msg/VescState.idl",
+    "/home/pi/Ros2_ackermann_robot/build/vesc_msgs/rosidl_adapter/vesc_msgs:msg/VescStateStamped.idl",
+    "/home/pi/Ros2_ackermann_robot/build/vesc_msgs/rosidl_adapter/vesc_msgs:msg/VescImu.idl",
+    "/home/pi/Ros2_ackermann_robot/build/vesc_msgs/rosidl_adapter/vesc_msgs:msg/VescImuStamped.idl"
+  ],
+  "include_paths": [
+    "builtin_interfaces:/opt/ros/kilted/share/builtin_interfaces",
+    "std_msgs:/opt/ros/kilted/share/std_msgs",
+    "geometry_msgs:/opt/ros/kilted/share/geometry_msgs"
+  ]
+}

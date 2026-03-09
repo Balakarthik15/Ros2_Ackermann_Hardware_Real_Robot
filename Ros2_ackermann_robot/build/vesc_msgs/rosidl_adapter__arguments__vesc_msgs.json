@@ -1,0 +1,9 @@
+{
+  "package_name": "vesc_msgs",
+  "non_idl_tuples": [
+    "/home/pi/Ros2_ackermann_robot/src/vesc/vesc_msgs:msg/VescState.msg",
+    "/home/pi/Ros2_ackermann_robot/src/vesc/vesc_msgs:msg/VescStateStamped.msg",
+    "/home/pi/Ros2_ackermann_robot/src/vesc/vesc_msgs:msg/VescImu.msg",
+    "/home/pi/Ros2_ackermann_robot/src/vesc/vesc_msgs:msg/VescImuStamped.msg"
+  ]
+}

@@ -1,0 +1,37 @@
+[2.472s] Invoking command in '/home/pi/Ros2_ackermann_robot/src/ackermann_teleop': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi/Ros2_ackermann_robot/build/ackermann_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi/Ros2_ackermann_robot/install/ackermann_teleop/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ackermann_teleop build --build-base /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/build install --record /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/install.log --single-version-externally-managed install_data
+[3.053s] running egg_info
+[3.054s] creating ../../build/ackermann_teleop/ackermann_teleop.egg-info
+[3.088s] writing ../../build/ackermann_teleop/ackermann_teleop.egg-info/PKG-INFO
+[3.088s] writing dependency_links to ../../build/ackermann_teleop/ackermann_teleop.egg-info/dependency_links.txt
+[3.090s] writing entry points to ../../build/ackermann_teleop/ackermann_teleop.egg-info/entry_points.txt
+[3.090s] writing requirements to ../../build/ackermann_teleop/ackermann_teleop.egg-info/requires.txt
+[3.093s] writing top-level names to ../../build/ackermann_teleop/ackermann_teleop.egg-info/top_level.txt
+[3.093s] writing manifest file '../../build/ackermann_teleop/ackermann_teleop.egg-info/SOURCES.txt'
+[3.167s] reading manifest file '../../build/ackermann_teleop/ackermann_teleop.egg-info/SOURCES.txt'
+[3.168s] writing manifest file '../../build/ackermann_teleop/ackermann_teleop.egg-info/SOURCES.txt'
+[3.169s] running build
+[3.169s] running build_py
+[3.169s] creating /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/build
+[3.170s] creating /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/build/lib
+[3.170s] creating /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/build/lib/ackermann_teleop
+[3.170s] copying ackermann_teleop/__init__.py -> /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/build/lib/ackermann_teleop
+[3.171s] copying ackermann_teleop/keyboard_teleop.py -> /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/build/lib/ackermann_teleop
+[3.172s] running install
+[3.180s] running install_lib
+[3.224s] creating /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/lib/python3.12/site-packages/ackermann_teleop
+[3.224s] copying /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/build/lib/ackermann_teleop/__init__.py -> /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/lib/python3.12/site-packages/ackermann_teleop
+[3.224s] copying /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/build/lib/ackermann_teleop/keyboard_teleop.py -> /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/lib/python3.12/site-packages/ackermann_teleop
+[3.224s] byte-compiling /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/lib/python3.12/site-packages/ackermann_teleop/__init__.py to __init__.cpython-312.pyc
+[3.225s] byte-compiling /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/lib/python3.12/site-packages/ackermann_teleop/keyboard_teleop.py to keyboard_teleop.cpython-312.pyc
+[3.227s] running install_data
+[3.227s] creating /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/share/ament_index
+[3.227s] creating /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/share/ament_index/resource_index
+[3.227s] creating /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/share/ament_index/resource_index/packages
+[3.228s] copying resource/ackermann_teleop -> /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/share/ament_index/resource_index/packages
+[3.228s] copying package.xml -> /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/share/ackermann_teleop
+[3.230s] running install_egg_info
+[3.267s] Copying ../../build/ackermann_teleop/ackermann_teleop.egg-info to /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/lib/python3.12/site-packages/ackermann_teleop-0.0.0-py3.12.egg-info
+[3.267s] running install_scripts
+[3.571s] Installing keyboard_teleop script to /home/pi/Ros2_ackermann_robot/install/ackermann_teleop/lib/ackermann_teleop
+[3.575s] writing list of installed files to '/home/pi/Ros2_ackermann_robot/build/ackermann_teleop/install.log'
+[3.731s] Invoked command in '/home/pi/Ros2_ackermann_robot/src/ackermann_teleop' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com PYTHONPATH=/home/pi/Ros2_ackermann_robot/build/ackermann_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/pi/Ros2_ackermann_robot/install/ackermann_teleop/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ackermann_teleop build --build-base /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/build install --record /home/pi/Ros2_ackermann_robot/build/ackermann_teleop/install.log --single-version-externally-managed install_data

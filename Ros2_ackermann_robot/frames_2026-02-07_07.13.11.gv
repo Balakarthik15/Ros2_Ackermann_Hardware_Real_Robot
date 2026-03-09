@@ -1,0 +1,17 @@
+digraph G {
+"odom" -> "base_footprint"[label=" Broadcaster: default_authority\nAverage rate: 50.505\nBuffer length: 1.98\nMost recent transform: 25.48\nOldest transform: 23.5\n"];
+"base_footprint" -> "base_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "chassis_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"chassis_link" -> "bot_ackermann/base_footprint/gpu_lidar"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"chassis_link" -> "fr_left_steer_link"[label=" Broadcaster: default_authority\nAverage rate: 20.513\nBuffer length: 1.95\nMost recent transform: 25.45\nOldest transform: 23.5\n"];
+"fr_left_steer_link" -> "fr_left_wheel_link"[label=" Broadcaster: default_authority\nAverage rate: 20.513\nBuffer length: 1.95\nMost recent transform: 25.45\nOldest transform: 23.5\n"];
+"chassis_link" -> "fr_right_steer_link"[label=" Broadcaster: default_authority\nAverage rate: 20.513\nBuffer length: 1.95\nMost recent transform: 25.45\nOldest transform: 23.5\n"];
+"fr_right_steer_link" -> "fr_right_wheel_link"[label=" Broadcaster: default_authority\nAverage rate: 20.513\nBuffer length: 1.95\nMost recent transform: 25.45\nOldest transform: 23.5\n"];
+"chassis_link" -> "re_left_wheel_link"[label=" Broadcaster: default_authority\nAverage rate: 20.513\nBuffer length: 1.95\nMost recent transform: 25.45\nOldest transform: 23.5\n"];
+"chassis_link" -> "re_right_wheel_link"[label=" Broadcaster: default_authority\nAverage rate: 20.513\nBuffer length: 1.95\nMost recent transform: 25.45\nOldest transform: 23.5\n"];
+"chassis_link" -> "virtual_steer_link"[label=" Broadcaster: default_authority\nAverage rate: 20.513\nBuffer length: 1.95\nMost recent transform: 25.45\nOldest transform: 23.5\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1770444791.8216872"[ shape=plaintext ] ;
+}->"odom";
+}
