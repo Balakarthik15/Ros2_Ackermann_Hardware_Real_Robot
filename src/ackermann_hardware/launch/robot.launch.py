@@ -57,11 +57,22 @@ def generate_launch_description():
     # ==============================
     # Include VESC Driver Launch
     # ==============================
-    vesc_pkg = get_package_share_directory('vesc')
+    vesc_pkg = get_package_share_directory('vesc_driver')
     vesc_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            os.path.join(vesc_pkg, 'vesc_driver','launch', 'vesc_driver_node.launch.py')
+            os.path.join(vesc_pkg,'launch', 'vesc_driver_node.launch.py')
         )
+    )
+
+
+    # ==============================
+    # VESC TO ODOM
+    # ==============================
+    Vesc_to_Odom_node = Node(
+        package='ackermann_hardware',
+        executable='vesc_to_odom',
+        name='vesc_to_odom',
+        output='screen'
     )
 
     # ==============================
@@ -78,4 +89,5 @@ def generate_launch_description():
         vesc_launch,
         ackermann_node,
         joint_state_node,
+        Vesc_to_Odom_node
     ])

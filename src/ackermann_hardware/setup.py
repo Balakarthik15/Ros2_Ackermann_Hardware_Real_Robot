@@ -29,7 +29,8 @@ setup(
     },
     entry_points={
         'console_scripts': ['joint_states = ackermann_hardware.joint_states:main',
-                            'ackermann_to_vesc = ackermann_hardware.ackermann_to_vesc:main'
+                            'ackermann_to_vesc = ackermann_hardware.ackermann_to_vesc:main',
+                            'vesc_to_odom = ackermann_hardware.vesc_to_odom:main'
         ],
     },
 )

@@ -1,179 +1,3 @@
-<?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-    <!-- ================================ -->
-    <!-- GAZEBO HARMONIC CONFIGURATIONS -->
-    <!-- ================================ -->
-    
-    <!-- Material and friction properties -->
-    <gazebo reference="chassis_link">
-        <visual>
-            <material>
-                <ambient>1 1 1 1</ambient>
-                <diffuse>1 1 1 1</diffuse>
-                <specular>1 1 1 1</specular>
-            </material>
-        </visual>
-        <collision>
-            <surface>
-                <friction>
-                    <ode>
-                        <mu>0.5</mu>
-                        <mu2>0.5</mu2>
-                    </ode>
-                </friction>
-            </surface>
-        </collision>
-    </gazebo>
-    
-    <gazebo reference="fr_left_wheel_link">
-        <visual>
-            <material>
-                <ambient>0.5 0.5 0.5 1</ambient>
-                <diffuse>0.5 0.5 0.5 1</diffuse>
-                <specular>0.5 0.5 0.5 1</specular>
-            </material>
-        </visual>
-        <collision>
-            <surface>
-                <friction>
-                    <ode>
-                        <mu>1.0</mu>
-                        <mu2>1.0</mu2>
-                    </ode>
-                </friction>
-            </surface>
-        </collision>
-    </gazebo>
-    
-    <gazebo reference="fr_right_wheel_link">
-        <visual>
-            <material>
-                <ambient>0.5 0.5 0.5 1</ambient>
-                <diffuse>0.5 0.5 0.5 1</diffuse>
-                <specular>0.5 0.5 0.5 1</specular>
-            </material>
-        </visual>
-        <collision>
-            <surface>
-                <friction>
-                    <ode>
-                        <mu>1.0</mu>
-                        <mu2>1.0</mu2>
-                    </ode>
-                </friction>
-            </surface>
-        </collision>
-    </gazebo>
-    
-    <gazebo reference="re_left_wheel_link">
-        <visual>
-            <material>
-                <ambient>0.5 0.5 0.5 1</ambient>
-                <diffuse>0.5 0.5 0.5 1</diffuse>
-                <specular>0.5 0.5 0.5 1</specular>
-            </material>
-        </visual>
-        <collision>
-            <surface>
-                <friction>
-                    <ode>
-                        <mu>1.0</mu>
-                        <mu2>1.0</mu2>
-                    </ode>
-                </friction>
-            </surface>
-        </collision>
-    </gazebo>
-    
-    <gazebo reference="re_right_wheel_link">
-        <visual>
-            <material>
-                <ambient>0.5 0.5 0.5 1</ambient>
-                <diffuse>0.5 0.5 0.5 1</diffuse>
-                <specular>0.5 0.5 0.5 1</specular>
-            </material>
-        </visual>
-        <collision>
-            <surface>
-                <friction>
-                    <ode>
-                        <mu>1.0</mu>
-                        <mu2>1.0</mu2>
-                    </ode>
-                </friction>
-            </surface>
-        </collision>
-    </gazebo>
-    
-    <gazebo reference="virtual_steer_link">
-        <visual>
-            <material>
-                <ambient>1 1 0 1</ambient>
-                <diffuse>1 1 0 1</diffuse>
-                <specular>1 1 0 1</specular>
-            </material>
-        </visual>
-    </gazebo>
-
-    <!-- ================================ -->
-    <!-- JOINT STATE PUBLISHER PLUGIN -->
-    <!-- ================================ -->
-    <gazebo>
-        <plugin filename="gz-sim-joint-state-publisher-system"
-            name="gz::sim::systems::JointStatePublisher">
-            <topic>joint_states</topic>
-            <update_rate>100</update_rate>
-            <joint_name>fr_right_steer_joint</joint_name>
-            <joint_name>fr_right_wheel_joint</joint_name>
-            <joint_name>fr_left_steer_joint</joint_name>
-            <joint_name>fr_left_wheel_joint</joint_name>
-            <joint_name>re_right_wheel_joint</joint_name>
-            <joint_name>re_left_wheel_joint</joint_name>
-            <joint_name>virtual_steering_wheel_joint</joint_name>
-        </plugin>
-    </gazebo>
-
-     
- 
-    <!-- ================================
-    <! ACKERMANN DRIVE PLUGIN -->
-    <!-- ================================ -->
-    <gazebo>
-        <plugin filename="gz-sim-ackermann-steering-system"
-            name="gz::sim::systems::AckermannSteering">
-            
-            <!-- Wheel joints -->
-            <left_joint>fr_left_wheel_joint</left_joint>
-            <left_joint>re_left_wheel_joint</left_joint>
-            <right_joint>fr_right_wheel_joint</right_joint>
-            <right_joint>re_right_wheel_joint</right_joint>
-            <!-- Steering joints -->
-            <left_steering_joint>fr_left_steer_joint</left_steering_joint>
-            <right_steering_joint>fr_right_steer_joint</right_steering_joint>
-            <steering_joint>virtual_steering_wheel_joint</steering_joint>
-            
-            <!-- Wheel parameters -->
-            <wheel_separation>${track_width}</wheel_separation>
-            <kingpin_width>${track_width}</kingpin_width>
-            <wheel_base>${wheelbase}</wheel_base>
-            <wheel_radius>${wheel_radius}</wheel_radius>
-
-            <min_velocity>-1</min_velocity>
-            <max_velocity>1</max_velocity>
-            
-            <!-- Steering limits -->
-            <steering_limit>${max_steering_angle}</steering_limit>
-            
-            <!-- Command and odometry topics -->
-            <topic>/cmd_vel</topic>
-            <tf_topic>/tf</tf_topic>
-            <odom_topic>/odom</odom_topic>
-            <frame_id>odom</frame_id>
-            <child_frame_id>base_footprint</child_frame_id>
-            <odom_publish_frequency>50</odom_publish_frequency>
-        </plugin>
-    </gazebo> 
-
     <!-- ================================ -->
     <!-- VIRTUAL STEERING WHEEL -->
     <!-- ================================ -->
@@ -196,28 +20,75 @@
     </link>
     
     <joint name="virtual_steering_wheel_joint" type="revolute">
-        <origin xyz="-0.32 0.0 0.0" rpy="0.0 0.0 0.0" />
+        <origin xyz="${-body_length/2 + 0.05} 0.0 0.0" rpy="0.0 0.0 0.0" />
         <parent link="chassis_link" />
         <child link="virtual_steer_link" />
         <axis xyz="-1 0 0" />
         <limit lower="-3" upper="3" effort="200" velocity="20" />
     </joint>
 
+
     <!-- ================================ -->
-    <!-- LIDAR SENSOR (GPU-based) -->
+    <!-- GAZEBO PLUGIN CONFIGURATIONS -->
     <!-- ================================ -->
-    <gazebo reference="laser_link">
-        <visual>
-            <material>
-                <ambient>0 0 0 1</ambient>
-                <diffuse>0 0 0 1</diffuse>
-                <specular>0 0 0 1</specular>
-            </material>
-        </visual>
-        
-        <sensor name="gpu_lidar" type="gpu_lidar">
-            <pose>0 0 0 0 0 0</pose>
+    
+    <!-- Chassis -->
+    <gazebo reference="chassis_link">
+        <mu1>0.001</mu1>
+        <mu2>0.001</mu2>
+        <material>Gazebo/Grey</material>
+    </gazebo>
+    
+    <!-- Steering links
+    <gazebo reference="fr_left_steer_link">
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
+        <material>Gazebo/Black</material>
+    </gazebo>
+    
+    <gazebo reference="fr_right_steer_link">
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
+        <material>Gazebo/Black</material>
+    </gazebo>
+     -->
+    <!-- Front wheels -->
+    <gazebo reference="fr_left_wheel_link">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <gazebo reference="fr_right_wheel_link">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <!-- Rear wheels -->
+    <gazebo reference="re_left_wheel_link">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <gazebo reference="re_right_wheel_link">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <material>Gazebo/DarkGrey</material>
+    </gazebo>
+    
+    <!-- Virtual steering wheel -->
+    <gazebo reference="virtual_steer_link">
+        <material>Gazebo/Yellow</material>
+    </gazebo>
+    
+    <!-- LiDAR -->
+    <gazebo reference="bot_ackermann/base_footprint/gpu_lidar">
+        <sensor type="gpu_lidar" name="gpu_lidar">
+            <pose relative_to='bot_ackermann/base_footprint/gpu_lidar'>0 0 0 0 0 0</pose>
             <visualize>true</visualize>
+            <topic>scan</topic>
             <update_rate>10</update_rate>
             <always_on>true</always_on>
             
@@ -232,7 +103,7 @@
                 </scan>
                 
                 <range>
-                    <min>0.3</min>
+                    <min>0.15</min>
                     <max>12.0</max>
                     <resolution>0.01</resolution>
                 </range>
@@ -243,11 +114,97 @@
                     <stddev>0.01</stddev>
                 </noise>
             </lidar>
-            
-            <topic>/scan</topic>
-            <frame_id>laser_link</frame_id>
         </sensor>
     </gazebo>
 
-</robot>
 
+    <!-- ================================ -->
+    <!-- JOINT STATE PUBLISHER PLUGIN -->
+    <!-- ================================ -->
+    <gazebo>
+        <plugin filename="gz-sim-joint-state-publisher-system"
+            name="gz::sim::systems::JointStatePublisher">
+            <topic>joint_states</topic>
+            <update_rate>100</update_rate>
+            <joint_name>fr_right_steer_joint</joint_name>
+            <joint_name>fr_right_wheel_joint</joint_name>
+            <joint_name>fr_left_steer_joint</joint_name>
+            <joint_name>fr_left_wheel_joint</joint_name>
+            <joint_name>re_right_wheel_joint</joint_name>
+            <joint_name>re_left_wheel_joint</joint_name>
+            <joint_name>virtual_steering_wheel_joint</joint_name>
+        </plugin>
+    </gazebo>
+
+
+        <!-- Gazebo Control -->
+    <ros2_control name="control" type="system">
+        <hardware>
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </hardware>
+            
+        <joint name="fr_left_steer_joint">
+            <command_interface name="position">
+                <!-- <param name="min">${-max_steering_angle}</param>
+                <param name="max">${max_steering_angle}</param> -->
+            </command_interface>
+
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="fr_right_steer_joint">
+            <command_interface name="position">
+                <!-- <param name="min">${-max_steering_angle}</param>
+                <param name="max">${max_steering_angle}</param> -->
+            </command_interface>
+
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="re_left_wheel_joint">
+            <command_interface name="velocity">
+                <!-- <param name="min">${-max_wheel_angular_velocity}</param>
+                <param name="max">${max_wheel_angular_velocity}</param> -->
+            </command_interface>
+
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+
+        <joint name="re_right_wheel_joint">
+            <command_interface name="velocity">
+                <!-- <param name="min">${-max_wheel_angular_velocity}</param>
+                <param name="max">${max_wheel_angular_velocity}</param> -->
+            </command_interface>
+
+            <state_interface name="position"/>
+            <state_interface name="velocity"/>
+            <state_interface name="effort"/>
+        </joint>
+    </ros2_control>
+    
+
+    <gazebo>
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters> $(find ackermann_gazebo)/config/gz_ros2_control.yaml</parameters>
+        
+            <ros>
+                <remapping>ackermann_steering_controller/tf_odometry:=/tf</remapping>
+                <remapping>ackermann_steering_controller/odometry:=/odom</remapping>
+
+            </ros>
+        </plugin>
+    </gazebo>
+
+
+
+    <gazebo>
+        <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+            <render_engine>ogre2</render_engine>
+        </plugin>
+  </gazebo>
