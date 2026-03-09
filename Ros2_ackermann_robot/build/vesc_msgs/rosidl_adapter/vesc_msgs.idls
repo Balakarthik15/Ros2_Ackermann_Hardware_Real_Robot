@@ -1,4 +1,0 @@
-/home/pi/Ros2_ackermann_robot/build/vesc_msgs/rosidl_adapter/vesc_msgs:msg/VescState.idl
-/home/pi/Ros2_ackermann_robot/build/vesc_msgs/rosidl_adapter/vesc_msgs:msg/VescStateStamped.idl
-/home/pi/Ros2_ackermann_robot/build/vesc_msgs/rosidl_adapter/vesc_msgs:msg/VescImu.idl
-/home/pi/Ros2_ackermann_robot/build/vesc_msgs/rosidl_adapter/vesc_msgs:msg/VescImuStamped.idl

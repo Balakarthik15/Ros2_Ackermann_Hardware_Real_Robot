@@ -1,3 +1,0 @@
-[console_scripts]
-ackermann_to_vesc = ackermann_hardware.ackermann_to_vesc:main
-joint_states = ackermann_hardware.joint_states:main

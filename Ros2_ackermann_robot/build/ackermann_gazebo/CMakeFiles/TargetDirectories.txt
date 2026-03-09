@@ -1,9 +1,0 @@
-/home/pi/Ros2_ackermann_robot/build/ackermann_gazebo/CMakeFiles/uninstall.dir
-/home/pi/Ros2_ackermann_robot/build/ackermann_gazebo/CMakeFiles/ackermann_gazebo_uninstall.dir
-/home/pi/Ros2_ackermann_robot/build/ackermann_gazebo/CMakeFiles/test.dir
-/home/pi/Ros2_ackermann_robot/build/ackermann_gazebo/CMakeFiles/edit_cache.dir
-/home/pi/Ros2_ackermann_robot/build/ackermann_gazebo/CMakeFiles/rebuild_cache.dir
-/home/pi/Ros2_ackermann_robot/build/ackermann_gazebo/CMakeFiles/list_install_components.dir
-/home/pi/Ros2_ackermann_robot/build/ackermann_gazebo/CMakeFiles/install.dir
-/home/pi/Ros2_ackermann_robot/build/ackermann_gazebo/CMakeFiles/install/local.dir
-/home/pi/Ros2_ackermann_robot/build/ackermann_gazebo/CMakeFiles/install/strip.dir
