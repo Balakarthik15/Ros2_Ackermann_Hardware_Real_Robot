@@ -1,0 +1,16 @@
+digraph G {
+"chassis_link" -> "fr_left_steer_link"[label=" Broadcaster: default_authority\nAverage rate: 16.87\nBuffer length: 4.92\nMost recent transform: 1773224010.779476\nOldest transform: 1773224005.859359\n"];
+"base_link" -> "chassis_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"fr_left_steer_link" -> "fr_left_wheel_link"[label=" Broadcaster: default_authority\nAverage rate: 16.87\nBuffer length: 4.92\nMost recent transform: 1773224010.779476\nOldest transform: 1773224005.859359\n"];
+"chassis_link" -> "fr_right_steer_link"[label=" Broadcaster: default_authority\nAverage rate: 16.87\nBuffer length: 4.92\nMost recent transform: 1773224010.779476\nOldest transform: 1773224005.859359\n"];
+"fr_right_steer_link" -> "fr_right_wheel_link"[label=" Broadcaster: default_authority\nAverage rate: 16.87\nBuffer length: 4.92\nMost recent transform: 1773224010.779476\nOldest transform: 1773224005.859359\n"];
+"chassis_link" -> "re_left_wheel_link"[label=" Broadcaster: default_authority\nAverage rate: 16.87\nBuffer length: 4.92\nMost recent transform: 1773224010.779476\nOldest transform: 1773224005.859359\n"];
+"chassis_link" -> "re_right_wheel_link"[label=" Broadcaster: default_authority\nAverage rate: 16.87\nBuffer length: 4.92\nMost recent transform: 1773224010.779476\nOldest transform: 1773224005.859359\n"];
+"odom" -> "base_footprint"[label=" Broadcaster: default_authority\nAverage rate: 50.173\nBuffer length: 5.003\nMost recent transform: 1773224010.815316\nOldest transform: 1773224005.812599\n"];
+"base_footprint" -> "base_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"chassis_link" -> "laser"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1773224010.835195"[ shape=plaintext ] ;
+}->"odom";
+}

@@ -91,13 +91,16 @@ class JointStates(Node):
         msg.name = [
             'fr_left_steer_joint',
             'fr_right_steer_joint',
+            'fr_left_wheel_joint',
+            'fr_right_wheel_joint',
             're_left_wheel_joint',
             're_right_wheel_joint'
         ]
-
         msg.position = [
             steering_angle,
             steering_angle,
+            self.wheel_position,
+            self.wheel_position,
             self.wheel_position,
             self.wheel_position
         ]
@@ -105,6 +108,8 @@ class JointStates(Node):
         msg.velocity = [
             0.0,
             0.0,
+            wheel_angular_velocity,
+            wheel_angular_velocity,
             wheel_angular_velocity,
             wheel_angular_velocity
         ]
