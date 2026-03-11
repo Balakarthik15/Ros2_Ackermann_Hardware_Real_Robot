@@ -29,6 +29,8 @@ def generate_launch_description():
         'robot_description': robot_description_config.toxml()
     }
 
+    joystick_config=os.path.join((get_package_share_directory('ackermann_teleop')),'config','joystick.yaml')
+
     # ==============================
     # Robot State Publisher
     # ==============================
@@ -102,11 +104,31 @@ def generate_launch_description():
         )
     )
 
+    joy_node= Node(
+        package='joy',
+        executable='joy_node',
+        name='joy_node',
+        output='screen'
+    )
+
+    teleop_twist_joy_node=Node(
+        package='teleop_twist_joy',
+        executable='teleop_node',
+        name='teleop_twist_joy_node',
+        parameters=[joystick_config],
+        output='screen'
+    )
+
+
+
+
     return LaunchDescription([
         rsp_node,
         vesc_launch,
         ackermann_node,
         joint_state_node,
         Vesc_to_Odom_node,
-        rplidar_launch
+        rplidar_launch,
+        joy_node,
+        teleop_twist_joy_node
     ])

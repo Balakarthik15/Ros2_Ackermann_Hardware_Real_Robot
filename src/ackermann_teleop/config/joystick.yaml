@@ -1,0 +1,21 @@
+teleop_twist_joy_node:
+  ros__parameters:
+
+  # Enable button (deadman switch)
+    enable_button: 6
+
+  # Forward / reverse control
+    axis_linear:
+      x: 1
+
+    # Steering control
+    axis_angular:
+      yaw: 0
+
+    # Limit manual speed to 50% of max
+    scale_linear:
+      x: 0.5
+
+    # Steering sensitivity
+    scale_angular:
+      yaw: 0.4
