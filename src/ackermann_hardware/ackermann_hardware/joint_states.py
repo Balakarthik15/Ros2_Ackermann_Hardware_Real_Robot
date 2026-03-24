@@ -15,8 +15,8 @@ class JointStates(Node):
         super().__init__('joint_states')
 
         # -------- Robot Constants --------
-        self.pole_pairs = 7          # 14 poles
-        self.gear_ratio = 3.0
+        self.pole_pairs = 2          # 14 poles
+        self.gear_ratio = 10.45
         self.wheel_radius = 0.055    # meters
 
         # Steering calibration

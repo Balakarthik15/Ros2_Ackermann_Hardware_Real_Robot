@@ -97,7 +97,7 @@ def generate_launch_description():
     rplidar_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution([
-                FindPackageShare("rplidar_ros"),
+                FindPackageShare("ackermann_hardware"),
                 "launch",
                 "rplidar.launch.py",
             ])

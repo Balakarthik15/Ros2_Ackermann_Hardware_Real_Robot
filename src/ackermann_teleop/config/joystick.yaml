@@ -14,8 +14,8 @@ teleop_twist_joy_node:
 
     # Limit manual speed to 50% of max
     scale_linear:
-      x: 0.5
+      x: 0.4
 
     # Steering sensitivity
     scale_angular:
-      yaw: 0.4
+      yaw: 0.6

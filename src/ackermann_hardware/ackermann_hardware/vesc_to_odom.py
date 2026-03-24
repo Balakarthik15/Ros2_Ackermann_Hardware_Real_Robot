@@ -49,8 +49,8 @@ class VESCToOdom(Node):
         # ===============================
         # MOTOR PARAMETERS
         # ===============================
-        self.motor_pole_pairs = 7
-        self.gear_ratio = 3.0
+        self.motor_pole_pairs = 2
+        self.gear_ratio = 10.45
 
         # ===============================
         # SERVO CALIBRATION
@@ -168,8 +168,26 @@ class VESCToOdom(Node):
         odom.pose.pose.orientation.z = qz
         odom.pose.pose.orientation.w = qw
 
+        odom.pose.covariance = [
+        0.001, 0, 0, 0, 0, 0,
+        0, 0.001, 0, 0, 0, 0,
+        0, 0, 0.001, 0, 0, 0,
+        0, 0, 0, 0.001, 0, 0,
+        0, 0, 0, 0, 0.001, 0,
+        0, 0, 0, 0, 0, 0.01
+        ]
+
         odom.twist.twist.linear.x = velocity
         odom.twist.twist.angular.z = yaw_rate
+
+        odom.twist.covariance = [
+        0.001, 0, 0, 0, 0, 0,
+        0, 0.001, 0, 0, 0, 0,
+        0, 0, 0.001, 0, 0, 0,
+        0, 0, 0, 0.001, 0, 0,
+        0, 0, 0, 0, 0.001, 0,
+        0, 0, 0, 0, 0, 0.01
+        ]
 
         self.odom_pub.publish(odom)
 
