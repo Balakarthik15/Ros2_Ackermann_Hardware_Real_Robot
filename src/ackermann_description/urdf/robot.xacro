@@ -5,9 +5,9 @@
     <!-- ROBOT PROPERTIES -->
     <!-- ================================ -->
     <xacro:property name="body_mass" value="1.58" />
-    <xacro:property name="body_length" value="0.475" />
+    <xacro:property name="body_length" value="0.460" />
     <xacro:property name="body_width" value="0.21" />
-    <xacro:property name="body_height" value="0.160" />
+    <xacro:property name="body_height" value="0.110" />
 
     <xacro:property name="wheelbase" value="0.285" />
     <xacro:property name="track_width" value="0.280" />
@@ -381,11 +381,46 @@
     </link>
 
     <joint name="laser_joint" type="fixed">
-        <parent link="base_link" />
+        <parent link="chassis_link" />
         <child link="laser" />
         <!-- LiDAR at front edge + its radius, sitting on top surface -->
         <origin xyz=" 0.15 0.0 ${body_height/2 + lidar_height/2}" rpy="0 0 0" />
     </joint>
+
+    <!-- ================================ -->
+    <!-- IMU LINK -->
+    <!-- ================================ -->
+
+    <link name="imu_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.03 0.03 0.01" />
+            </geometry>
+            <material name="imu_blue">
+                <color rgba="0.1 0.1 0.8 1.0" />
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size ="0.03 0.03 0.01" />
+            </geometry>
+        </collision>
+    </link>
+
+
+    <joint name="imu_joint" type="fixed">
+        <parent link="chassis_link" />
+        <child link="imu_link" />
+        <!-- IMU fixed at center of chassis link-->
+        <origin xyz=" 0.02 0 0.0175" rpy="0 0 0" />
+    </joint>
+    
+    
+
+
 
 </robot>
 
