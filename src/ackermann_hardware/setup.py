@@ -12,8 +12,15 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
+        # Include all launch files
         (os.path.join('share', package_name, 'launch'),
-            glob('launch/*.launch.py')),
+            glob(os.path.join('launch', '*.launch.py'))),
+        # Include all config files (YAML, etc.)
+        (os.path.join('share', package_name, 'config'),
+            glob(os.path.join('config', '*'))),
+        # Include map files if you have them in a maps folder
+        (os.path.join('share', package_name, 'map'),
+            glob(os.path.join('map', '*'))),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -27,9 +34,10 @@ setup(
         ],
     },
     entry_points={
-        'console_scripts': ['joint_states = ackermann_hardware.joint_states:main',
-                            'ackermann_to_vesc = ackermann_hardware.ackermann_to_vesc:main',
-                            'vesc_to_odom = ackermann_hardware.vesc_to_odom:main'
+        'console_scripts': [
+            'joint_states = ackermann_hardware.joint_states:main',
+            'ackermann_to_vesc = ackermann_hardware.ackermann_to_vesc:main',
+            'vesc_to_odom = ackermann_hardware.vesc_to_odom:main'
         ],
     },
 )
