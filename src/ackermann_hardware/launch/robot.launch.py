@@ -30,6 +30,8 @@ def generate_launch_description():
     }
 
     joystick_config=os.path.join((get_package_share_directory('ackermann_teleop')),'config','joystick.yaml')
+    imu_config=os.path.join((get_package_share_directory('ackermann_hardware')),'config','bno055_params_i2c.yaml')
+    ekf_config=os.path.join((get_package_share_directory('ackermann_hardware')),'config','ekf.yaml')
 
     # ==============================
     # Robot State Publisher
@@ -119,6 +121,25 @@ def generate_launch_description():
         output='screen'
     )
 
+    imu_node=Node(
+        package='bno055',
+        executable='bno055',
+        name='bno055',
+        parameters=[imu_config],
+        output='screen'
+    )
+
+    ekf_node=Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node',
+        parameters=[ekf_config],
+        output='screen'
+    )
+
+
+
+
 
 
 
@@ -129,6 +150,6 @@ def generate_launch_description():
         joint_state_node,
         Vesc_to_Odom_node,
         rplidar_launch,
-        joy_node,
-        teleop_twist_joy_node
+        imu_node,
+        ekf_node,
     ])

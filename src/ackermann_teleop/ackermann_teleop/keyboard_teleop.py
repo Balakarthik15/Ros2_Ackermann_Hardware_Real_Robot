@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import TwistStamped
 
 import sys
 import termios
@@ -13,9 +13,9 @@ class KeyboardTeleop(Node):
     def __init__(self):
         super().__init__('keyboard_teleop')
 
-        # Publish to standard ROS cmd_vel
+        # Publish TwistStamped to standard ROS cmd_vel
         self.cmd_pub = self.create_publisher(
-            Twist,
+            TwistStamped,
             '/cmd_vel',
             10
         )
@@ -35,10 +35,12 @@ class KeyboardTeleop(Node):
         )
 
     def publish_once(self):
-        msg = Twist()
+        msg = TwistStamped()
+        msg.header.stamp = self.get_clock().now().to_msg()
+        msg.header.frame_id = "base_footprint"
 
-        msg.linear.x = float(self.velocity)
-        msg.angular.z = float(self.steering)
+        msg.twist.linear.x = float(self.velocity)
+        msg.twist.angular.z = float(self.steering)
 
         self.cmd_pub.publish(msg)
 
@@ -54,8 +56,6 @@ class KeyboardTeleop(Node):
             last_pub = time.time()
 
             while rclpy.ok():
-
-                # publish continuously at 10 Hz
                 now = time.time()
                 if now - last_pub >= 0.1:
                     self.publish_once()
@@ -63,7 +63,6 @@ class KeyboardTeleop(Node):
 
                 rclpy.spin_once(self, timeout_sec=0.0)
 
-                # non-blocking key read
                 if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:
                     key = sys.stdin.read(1)
 
