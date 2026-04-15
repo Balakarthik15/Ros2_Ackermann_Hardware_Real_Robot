@@ -23,7 +23,7 @@ def generate_launch_description():
         launch_arguments={
             'use_sim_time': 'False', # Ensure this is a string
             'autostart': autostart,
-            'map': os.path.join(pkg_ackermann_bringup, 'map', 'robotics_lab.yaml'),
+            'map': os.path.join(pkg_ackermann_bringup, 'map', 'Test_map.yaml'),
             'params_file': os.path.join(pkg_ackermann_bringup, 'config', 'nav2_params.yaml'),
             'use_composition': 'True',
             'use_respawn': 'False',
