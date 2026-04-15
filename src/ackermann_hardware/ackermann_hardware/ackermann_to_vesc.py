@@ -26,34 +26,29 @@ class AckermannToVESC(Node):
         self.max_erpm = 30000.0
 
         # Servo calibration
+        # Keep these exactly as in your current working file
         self.servo_center = 0.50
         self.servo_left_limit = 0.85
         self.servo_right_limit = 0.15
 
-        # Safety / mapping mode
-        self.max_vehicle_speed = 0.20
+        # Safety
+        # Keep timeout and hard ERPM clamp only
+        self.max_vehicle_speed = 0.3
         self.timeout = 0.5
         self.last_cmd_time = time.time()
-
-        # Slow-drive tuning
-        self.max_manual_erpm = 900
-        self.start_erpm = 700.0
-        self.velocity_deadband = 0.02
-        self.max_erpm_step = 40.0
 
         # State
         self.velocity = 0.0
         self.steering = 0.0
-        self.last_erpm_cmd = 0.0
 
         self.create_timer(0.05, self.publish_cmd)  # 20 Hz
 
         self.get_logger().info(
-            'Ackermann -> VESC node started (TwistStamped input)\n'
+            'Ackermann -> VESC node started (normal mode, TwistStamped input)\n'
             f'  max_vehicle_speed={self.max_vehicle_speed} m/s\n'
-            f'  max_manual_erpm={self.max_manual_erpm}\n'
-            f'  start_erpm={self.start_erpm}\n'
-            f'  max_erpm_step={self.max_erpm_step} per cycle'
+            f'  max_steering_angle_deg={math.degrees(self.max_steering_angle):.1f}\n'
+            f'  gear_ratio={self.gear_ratio}\n'
+            f'  motor_pole_pairs={self.motor_pole_pairs}'
         )
 
     def cmd_vel_cb(self, msg: TwistStamped):
@@ -94,28 +89,9 @@ class AckermannToVESC(Node):
 
         return servo
 
-    def apply_deadband_compensation(self, velocity: float, erpm: float) -> float:
-        if abs(velocity) < self.velocity_deadband:
-            return 0.0
-
-        sign = 1.0 if velocity > 0.0 else -1.0
-        mag = abs(erpm)
-
-        if mag < self.start_erpm:
-            mag = self.start_erpm
-
-        return sign * mag
-
-    def apply_erpm_ramp(self, target_erpm: float) -> float:
-        delta = target_erpm - self.last_erpm_cmd
-        delta = max(-self.max_erpm_step, min(self.max_erpm_step, delta))
-        cmd = self.last_erpm_cmd + delta
-        self.last_erpm_cmd = cmd
-        return cmd
-
     def publish_cmd(self):
         if time.time() - self.last_cmd_time > self.timeout:
-            target_erpm = 0.0
+            motor_erpm = 0.0
             servo_position = self.servo_center
         else:
             velocity = max(
@@ -123,17 +99,13 @@ class AckermannToVESC(Node):
                 min(self.max_vehicle_speed, self.velocity)
             )
 
-            target_erpm = self.velocity_to_erpm(velocity)
-            target_erpm = self.apply_deadband_compensation(velocity, target_erpm)
-            target_erpm = max(
-                -self.max_manual_erpm,
-                min(self.max_manual_erpm, target_erpm)
-            )
-
+            motor_erpm = self.velocity_to_erpm(velocity)
             servo_position = self.steering_to_servo(self.steering)
 
-        motor_erpm = self.apply_erpm_ramp(target_erpm)
-        motor_erpm = max(-self.max_erpm, min(self.max_erpm, motor_erpm))
+            motor_erpm = max(
+                -self.max_erpm,
+                min(self.max_erpm, motor_erpm)
+            )
 
         self.pub_motor.publish(Float64(data=float(motor_erpm)))
         self.pub_servo.publish(Float64(data=float(servo_position)))

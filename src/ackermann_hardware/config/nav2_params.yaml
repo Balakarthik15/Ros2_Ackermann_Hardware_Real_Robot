@@ -85,7 +85,7 @@ controller_server:
     min_x_velocity_threshold: 0.001
     min_y_velocity_threshold: 0.001
     min_theta_velocity_threshold: 0.001
-    failure_tolerance: 0.3
+    failure_tolerance: 0.6
     progress_checker_plugins: ["progress_checker"]
     goal_checker_plugins: ["general_goal_checker"]
     controller_plugins: ["FollowPath"]
@@ -102,7 +102,7 @@ controller_server:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
       xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.9
 
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"
@@ -118,7 +118,7 @@ controller_server:
       vy_std: 0.0
       wz_std: 0.4
       vx_max: 0.20
-      vx_min: -0.20
+      vx_min: -0.05
       vy_max: 0.0
       wz_max: 1.2
       iteration_count: 1
@@ -164,13 +164,13 @@ controller_server:
       GoalAngleCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 3.0
+        cost_weight: 1.0
         threshold_to_consider: 0.5
 
       PreferForwardCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 5.0
+        cost_weight: 2.0
         threshold_to_consider: 0.5
 
       CostCritic:
@@ -204,7 +204,7 @@ controller_server:
       PathAngleCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 2.0
+        cost_weight: 0.5
         offset_from_furthest: 4
         threshold_to_consider: 0.5
         max_angle_to_furthest: 1.0
@@ -344,16 +344,18 @@ planner_server:
 
     GridBased:
       plugin: "nav2_smac_planner::SmacPlannerHybrid"
-      tolerance: 0.25
+      tolerance: 0.5
       allow_unknown: true
       downsample_costmap: false
       downsampling_factor: 1
       max_iterations: 1000000
       max_on_approach_iterations: 1000
-      max_planning_time: 5.0
+      max_planning_time: 7.0
       motion_model_for_search: "REEDS_SHEPP"
       angle_quantization_bins: 72
       minimum_turning_radius: 0.407
+      reverse_penalty: 1.5
+      non_straight_penalty: 2.0
 
 smoother_server:
   ros__parameters:
