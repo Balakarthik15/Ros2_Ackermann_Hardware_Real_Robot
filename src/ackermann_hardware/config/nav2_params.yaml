@@ -82,7 +82,7 @@ controller_server:
   ros__parameters:
     controller_frequency: 10.0
     costmap_update_timeout: 0.30
-    min_x_velocity_threshold: 0.001
+    min_x_velocity_threshold: 0.19
     min_y_velocity_threshold: 0.001
     min_theta_velocity_threshold: 0.001
     failure_tolerance: 0.6
@@ -102,7 +102,7 @@ controller_server:
       stateful: True
       plugin: "nav2_controller::SimpleGoalChecker"
       xy_goal_tolerance: 0.25
-      yaw_goal_tolerance: 0.9
+      yaw_goal_tolerance: 0.4
 
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"
@@ -120,7 +120,7 @@ controller_server:
       vx_max: 0.20
       vx_min: -0.20
       vy_max: 0.0
-      wz_max: 1.2
+      wz_max: 0.6
       iteration_count: 1
       prune_distance: 1.7
       transform_tolerance: 0.1
@@ -197,7 +197,7 @@ controller_server:
       PathFollowCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 5.0
+        cost_weight: 10.0
         offset_from_furthest: 5
         threshold_to_consider: 1.4
 
@@ -466,8 +466,8 @@ velocity_smoother:
     smoothing_frequency: 20.0
     scale_velocities: False
     feedback: "OPEN_LOOP"
-    max_velocity: [0.20, 0.0, 1.2]
-    min_velocity: [-0.20, 0.0, -1.2]
+    max_velocity: [0.20, 0.0, 0.6]
+    min_velocity: [-0.20, 0.0, -0.6]
     max_accel: [2.5, 0.0, 3.2]
     max_decel: [-2.5, 0.0, -3.2]
     odom_topic: /odometry/filtered

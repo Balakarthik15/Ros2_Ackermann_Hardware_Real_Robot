@@ -18,7 +18,7 @@
     <xacro:property name="steering_mass" value="0.02" />
 
     <!-- max steering = 45 deg -->
-    <xacro:property name="max_steering_angle" value="${pi/4}" />
+    <xacro:property name="max_steering_angle" value="${7*pi/36}" />
 
     <xacro:property name="lidar_radius" value="0.035" />
     <xacro:property name="lidar_height" value="0.055" />

@@ -1,125 +1,224 @@
-import rclpy
-from rclpy.node import Node
-from std_msgs.msg import Float64
-from geometry_msgs.msg import TwistStamped
 import math
 import time
+from typing import Optional
+
+import rclpy
+from rclpy.node import Node
+
+from std_msgs.msg import Float64
+from geometry_msgs.msg import TwistStamped
 
 
-class AckermannToVESC(Node):
-
+class AckermannToVESCF1TenthStyle(Node):
     def __init__(self):
         super().__init__('ackermann_to_vesc')
 
-        self.create_subscription(TwistStamped, '/cmd_vel', self.cmd_vel_cb, 10)
-        self.pub_motor = self.create_publisher(Float64, '/commands/motor/speed', 10)
-        self.pub_servo = self.create_publisher(Float64, '/commands/servo/position', 10)
+        # -----------------------------
+        # Topics
+        # -----------------------------
+        self.declare_parameter('cmd_vel_topic', '/cmd_vel')
+        self.declare_parameter('motor_speed_topic', '/commands/motor/speed')
+        self.declare_parameter('servo_position_topic', '/commands/servo/position')
 
-        # Robot
-        self.wheelbase = 0.285
-        self.wheel_radius = 0.055
-        self.max_steering_angle = math.radians(35)
+        # -----------------------------
+        # Calibrated F1TENTH-style conversions
+        # Keep these matched with vesc_to_odom.py
+        # -----------------------------
+        self.declare_parameter('speed_to_erpm_gain', 3627.3)
+        self.declare_parameter('speed_to_erpm_offset', 0.0)
+        self.declare_parameter('steering_angle_to_servo_gain', 0.573)
+        self.declare_parameter('steering_angle_to_servo_offset', 0.50)
 
-        # Motor / drivetrain
-        self.motor_pole_pairs = 2
-        self.gear_ratio = 10.45
-        self.max_erpm = 30000.0
+        # -----------------------------
+        # Robot geometry
+        # -----------------------------
+        self.declare_parameter('wheelbase', 0.285)
+        self.declare_parameter('max_steering_angle_deg', 35.0)
 
-        # Servo calibration
-        # Keep these exactly as in your current working file
-        self.servo_center = 0.50
-        self.servo_left_limit = 0.85
-        self.servo_right_limit = 0.15
+        # -----------------------------
+        # Runtime / safety
+        # -----------------------------
+        self.declare_parameter('command_timeout', 0.5)
+        self.declare_parameter('max_speed_mps', 0.5)
+        self.declare_parameter('min_speed_for_steering_calc', 0.03)
+        self.declare_parameter('small_omega_threshold', 0.02)
+        self.declare_parameter('invert_speed_sign', False)
 
-        # Safety
-        # Keep timeout and hard ERPM clamp only
-        self.max_vehicle_speed = 0.3
-        self.timeout = 0.5
-        self.last_cmd_time = time.time()
+        # -----------------------------
+        # Startup deadband compensation
+        # -----------------------------
+        self.declare_parameter('min_start_erpm', 1000.0)
+        self.declare_parameter('min_running_erpm', 1000.0)
+        self.declare_parameter('speed_command_deadband', 0.02)
 
-        # State
-        self.velocity = 0.0
-        self.steering = 0.0
+        # -----------------------------
+        # Read params
+        # -----------------------------
+        self.cmd_vel_topic = self.get_parameter('cmd_vel_topic').value
+        self.motor_speed_topic = self.get_parameter('motor_speed_topic').value
+        self.servo_position_topic = self.get_parameter('servo_position_topic').value
 
-        self.create_timer(0.05, self.publish_cmd)  # 20 Hz
-
-        self.get_logger().info(
-            'Ackermann -> VESC node started (normal mode, TwistStamped input)\n'
-            f'  max_vehicle_speed={self.max_vehicle_speed} m/s\n'
-            f'  max_steering_angle_deg={math.degrees(self.max_steering_angle):.1f}\n'
-            f'  gear_ratio={self.gear_ratio}\n'
-            f'  motor_pole_pairs={self.motor_pole_pairs}'
+        self.speed_to_erpm_gain = float(self.get_parameter('speed_to_erpm_gain').value)
+        self.speed_to_erpm_offset = float(self.get_parameter('speed_to_erpm_offset').value)
+        self.steering_to_servo_gain = float(
+            self.get_parameter('steering_angle_to_servo_gain').value
+        )
+        self.steering_to_servo_offset = float(
+            self.get_parameter('steering_angle_to_servo_offset').value
         )
 
-    def cmd_vel_cb(self, msg: TwistStamped):
-        self.velocity = msg.twist.linear.x
+        self.wheelbase = float(self.get_parameter('wheelbase').value)
+        self.max_steering_angle = math.radians(
+            float(self.get_parameter('max_steering_angle_deg').value)
+        )
 
-        if abs(self.velocity) > 0.05:
-            self.steering = math.atan(
-                msg.twist.angular.z * self.wheelbase / self.velocity
-            )
-        else:
-            self.steering = 0.0
+        self.command_timeout = float(self.get_parameter('command_timeout').value)
+        self.max_speed_mps = float(self.get_parameter('max_speed_mps').value)
+        self.min_speed_for_steering_calc = float(
+            self.get_parameter('min_speed_for_steering_calc').value
+        )
+        self.small_omega_threshold = float(
+            self.get_parameter('small_omega_threshold').value
+        )
+        self.invert_speed_sign = bool(self.get_parameter('invert_speed_sign').value)
 
+        self.min_start_erpm = float(self.get_parameter('min_start_erpm').value)
+        self.min_running_erpm = float(self.get_parameter('min_running_erpm').value)
+        self.speed_command_deadband = float(
+            self.get_parameter('speed_command_deadband').value
+        )
+
+        if abs(self.speed_to_erpm_gain) < 1e-9:
+            raise ValueError('speed_to_erpm_gain must not be zero')
+        if abs(self.steering_to_servo_gain) < 1e-9:
+            raise ValueError('steering_angle_to_servo_gain must not be zero')
+
+        # -----------------------------
+        # State
+        # -----------------------------
         self.last_cmd_time = time.time()
+        self.last_speed_cmd: float = 0.0
+        self.last_steering_angle_cmd: float = 0.0
+        self.robot_is_moving = False
 
-    def velocity_to_erpm(self, velocity_mps: float) -> float:
-        wheel_angular_velocity = velocity_mps / self.wheel_radius
-        wheel_rpm = wheel_angular_velocity * 60.0 / (2.0 * math.pi)
-        motor_rpm = wheel_rpm * self.gear_ratio
-        erpm = motor_rpm * self.motor_pole_pairs
-        return erpm
+        # -----------------------------
+        # ROS interfaces
+        # -----------------------------
+        self.create_subscription(
+            TwistStamped,
+            self.cmd_vel_topic,
+            self.cmd_vel_callback,
+            10
+        )
 
-    def steering_to_servo(self, steering_angle: float) -> float:
+        self.motor_pub = self.create_publisher(Float64, self.motor_speed_topic, 10)
+        self.servo_pub = self.create_publisher(Float64, self.servo_position_topic, 10)
+
+        self.create_timer(0.05, self.publish_commands)  # 20 Hz
+
+        self.get_logger().info('AckermannToVESC F1TENTH-style node started')
+        self.get_logger().info(f'  cmd_vel_topic: {self.cmd_vel_topic}')
+        self.get_logger().info(f'  motor_speed_topic: {self.motor_speed_topic}')
+        self.get_logger().info(f'  servo_position_topic: {self.servo_position_topic}')
+        self.get_logger().info(f'  speed_to_erpm_gain: {self.speed_to_erpm_gain}')
+        self.get_logger().info(f'  speed_to_erpm_offset: {self.speed_to_erpm_offset}')
+        self.get_logger().info(f'  steering_angle_to_servo_gain: {self.steering_to_servo_gain}')
+        self.get_logger().info(f'  steering_angle_to_servo_offset: {self.steering_to_servo_offset}')
+        self.get_logger().info(f'  wheelbase: {self.wheelbase}')
+        self.get_logger().info(f'  max_steering_angle_deg: {math.degrees(self.max_steering_angle):.1f}')
+        self.get_logger().info(f'  max_speed_mps: {self.max_speed_mps}')
+        self.get_logger().info(f'  min_start_erpm: {self.min_start_erpm}')
+        self.get_logger().info(f'  min_running_erpm: {self.min_running_erpm}')
+        self.get_logger().info(f'  speed_command_deadband: {self.speed_command_deadband}')
+        self.get_logger().info(f'  invert_speed_sign: {self.invert_speed_sign}')
+
+    def cmd_vel_callback(self, msg: TwistStamped) -> None:
+        v = float(msg.twist.linear.x)
+        omega = float(msg.twist.angular.z)
+
+        # Clamp commanded speed for safety
+        v = max(-self.max_speed_mps, min(self.max_speed_mps, v))
+
+        # Convert Twist -> steering angle
+        steering_angle = self.last_steering_angle_cmd
+
+        if abs(v) > 0.01:
+            calc_v = v
+            if abs(calc_v) < self.min_speed_for_steering_calc:
+                calc_v = math.copysign(self.min_speed_for_steering_calc, calc_v)
+
+            steering_angle = math.atan((omega * self.wheelbase) / calc_v)
+        else:
+            # Only center when both speed and yaw command are tiny.
+            # Otherwise keep previous steering for low-speed precise turning.
+            if abs(omega) < self.small_omega_threshold:
+                steering_angle = 0.0
+
         steering_angle = max(
             -self.max_steering_angle,
             min(self.max_steering_angle, steering_angle)
         )
 
-        normalized = steering_angle / self.max_steering_angle
+        self.last_speed_cmd = v
+        self.last_steering_angle_cmd = steering_angle
+        self.last_cmd_time = time.time()
 
-        if normalized >= 0.0:
-            servo = self.servo_center + normalized * (
-                self.servo_left_limit - self.servo_center
-            )
+    def speed_to_erpm(self, speed_mps: float) -> float:
+        sign = -1.0 if self.invert_speed_sign else 1.0
+        return self.speed_to_erpm_gain * (sign * speed_mps) + self.speed_to_erpm_offset
+
+    def steering_angle_to_servo(self, steering_angle: float) -> float:
+        return self.steering_to_servo_gain * steering_angle + self.steering_to_servo_offset
+
+    def apply_start_deadband_compensation(self, speed_cmd: float, erpm_cmd: float) -> float:
+        # Stop command
+        if abs(speed_cmd) < self.speed_command_deadband:
+            self.robot_is_moving = False
+            return 0.0
+
+        sign = 1.0 if speed_cmd > 0.0 else -1.0
+        mag = abs(erpm_cmd)
+
+        # Startup boost from standstill
+        if not self.robot_is_moving:
+            if mag < self.min_start_erpm:
+                mag = self.min_start_erpm
+            self.robot_is_moving = True
         else:
-            servo = self.servo_center + normalized * (
-                self.servo_center - self.servo_right_limit
-            )
+            # Keep enough ERPM so the robot does not stall immediately
+            if mag < self.min_running_erpm:
+                mag = self.min_running_erpm
 
-        return servo
+        return sign * mag
 
-    def publish_cmd(self):
-        if time.time() - self.last_cmd_time > self.timeout:
-            motor_erpm = 0.0
-            servo_position = self.servo_center
+    def publish_commands(self) -> None:
+        # Timeout safety
+        if time.time() - self.last_cmd_time > self.command_timeout:
+            speed_cmd = 0.0
+            steering_angle_cmd = 0.0
+            self.robot_is_moving = False
         else:
-            velocity = max(
-                -self.max_vehicle_speed,
-                min(self.max_vehicle_speed, self.velocity)
-            )
+            speed_cmd = self.last_speed_cmd
+            steering_angle_cmd = self.last_steering_angle_cmd
 
-            motor_erpm = self.velocity_to_erpm(velocity)
-            servo_position = self.steering_to_servo(self.steering)
+        erpm = self.speed_to_erpm(speed_cmd)
+        erpm = self.apply_start_deadband_compensation(speed_cmd, erpm)
+        servo = self.steering_angle_to_servo(steering_angle_cmd)
 
-            motor_erpm = max(
-                -self.max_erpm,
-                min(self.max_erpm, motor_erpm)
-            )
-
-        self.pub_motor.publish(Float64(data=float(motor_erpm)))
-        self.pub_servo.publish(Float64(data=float(servo_position)))
+        self.motor_pub.publish(Float64(data=float(erpm)))
+        self.servo_pub.publish(Float64(data=float(servo)))
 
 
-def main():
-    rclpy.init()
-    node = AckermannToVESC()
+def main(args: Optional[list] = None):
+    rclpy.init(args=args)
+    node = AckermannToVESCF1TenthStyle()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
         pass
-    node.destroy_node()
-    rclpy.shutdown()
+    finally:
+        node.destroy_node()
+        rclpy.shutdown()
 
 
 if __name__ == '__main__':

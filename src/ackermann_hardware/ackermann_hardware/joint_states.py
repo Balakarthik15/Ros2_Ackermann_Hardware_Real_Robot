@@ -22,7 +22,7 @@ class JointStates(Node):
         # Steering calibration
         self.servo_min = 0.15
         self.servo_max = 0.85
-        self.max_steering_angle = math.radians(45)
+        self.max_steering_angle = math.radians(35)
 
         # -------- State Variables --------
         self.current_erpm = 0.0
