@@ -153,30 +153,30 @@ controller_server:
       ConstraintCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 4.0
+        cost_weight: 10.0
 
       GoalCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 5.0
+        cost_weight: 10.0
         threshold_to_consider: 1.4
 
       GoalAngleCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 1.0
+        cost_weight: 8.0
         threshold_to_consider: 0.8
 
       PreferForwardCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 1.0
+        cost_weight: 2.0
         threshold_to_consider: 0.8
 
       CostCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 3.81
+        cost_weight: 5.0
         near_collision_cost: 253
         critical_cost: 300.0
         consider_footprint: true
@@ -197,18 +197,40 @@ controller_server:
       PathFollowCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 10.0
+        cost_weight: 6.0
         offset_from_furthest: 5
         threshold_to_consider: 1.4
 
       PathAngleCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 0.5
+        cost_weight: 3.0
         offset_from_furthest: 4
         threshold_to_consider: 0.5
         max_angle_to_furthest: 1.0
-        mode: 1
+        mode: 0
+
+                  # NEW: Obstacles critic for better dynamic obstacle handling
+      ObstaclesCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 2.0
+        repulsion_weight: 1.5
+        critical_weight: 20.0
+        consider_footprint: true
+        collision_cost: 10000.0
+        collision_margin_distance: 0.15
+        near_goal_distance: 0.5
+        inflation_radius: 0.55 # (only in Humble)
+        cost_scaling_factor: 10.0 # (only in Humble)
+
+              
+      # NEW: Velocity deadband to prevent oscillations
+      VelocityDeadbandCritic:
+        enabled: true
+        cost_power: 1
+        cost_weight: 15.0  # High weight to enforce smooth motion
+        deadband_velocities: [0.05, 0.05, 0.05]  # [vx, vy, wz]
 
 local_costmap:
   local_costmap:
