@@ -59,13 +59,12 @@ bt_navigator:
     wait_for_service_timeout: 1000
     action_server_result_timeout: 900.0
     navigators: ["navigate_to_pose", "navigate_through_poses"]
+
     navigate_to_pose:
-      plugin: "nav2_bt_navigator/NavigateToPoseNavigator"
+      plugin: "nav2_bt_navigator::NavigateToPoseNavigator"
+
     navigate_through_poses:
-      plugin: "nav2_bt_navigator/NavigateThroughPosesNavigator"
-    error_code_names:
-      - compute_path_error_code
-      - follow_path_error_code
+      plugin: "nav2_bt_navigator::NavigateThroughPosesNavigator"
 
 controller_server:
   ros__parameters:
@@ -77,7 +76,7 @@ controller_server:
     min_theta_velocity_threshold: 0.001
     failure_tolerance: 0.3
     progress_checker_plugins: ["progress_checker"]
-    goal_checker_plugins: ["stopped_goal_checker"]
+    goal_checker_plugins: ["general_goal_checker"]
     controller_plugins: ["FollowPath"]
     use_realtime_priority: false
 
@@ -86,13 +85,11 @@ controller_server:
       required_movement_radius: 0.3 # 0.5
       movement_time_allowance: 15.0 # 10.0
       
-    stopped_goal_checker:
-      plugin: "nav2_controller::StoppedGoalChecker"
+    general_goal_checker:
       stateful: True
-      xy_goal_tolerance: 0.25        # Relaxed from 0.15 (25cm is reasonable)
-      yaw_goal_tolerance: 0.30       # Relaxed from 0.15 (~17° vs 8.6°)
-      trans_stopped_velocity: 0.05   # Robot must be nearly stopped (5cm/s)
-      rot_stopped_velocity: 0.10     # Robot must be nearly stopped (~6°/s)
+      plugin: "nav2_controller::SimpleGoalChecker"
+      xy_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.4
       
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"
@@ -120,7 +117,7 @@ controller_server:
       regenerate_noises: true
       
       AckermannConstraints:
-        min_turning_r: 0.30
+        min_turning_r: 0.407
         
       TrajectoryVisualizer:
         trajectory_step: 5
@@ -181,7 +178,7 @@ controller_server:
       PathAlignCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 12.0 #14.0
+        cost_weight: 8.0 #14.0
         max_path_occupancy_ratio: 0.05
         trajectory_point_step: 3 #4
         threshold_to_consider: 0.5
@@ -191,14 +188,14 @@ controller_server:
       PathFollowCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 6.0 #5.0
+        cost_weight: 4.0 #5.0
         offset_from_furthest: 5
         threshold_to_consider: 1.4
         
       PathAngleCritic:
         enabled: true
         cost_power: 1
-        cost_weight: 3.0 #2.0 
+        cost_weight: 2.0 #2.0 
         offset_from_furthest: 4
         threshold_to_consider: 0.5
         max_angle_to_furthest: 0.8 # 1.0
@@ -235,11 +232,11 @@ local_costmap:
       global_frame: odom
       robot_base_frame: base_link
       rolling_window: true
-      width: 4 #3
-      height: 4 #3
+      width: 2 #3
+      height: 2 #3
       resolution: 0.05
       
-      footprint: "[[0.36, 0.195], [0.36, -0.195], [-0.075, -0.195], [-0.075, 0.195]]"
+      footprint: "[[0.25, 0.20], [0.25, -0.20], [-0.25, -0.20], [-0.25, 0.20]]"
       plugins: ["voxel_layer", "inflation_layer"]
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
@@ -276,7 +273,7 @@ global_costmap:
       global_frame: map
       robot_base_frame: base_link
       # 使用footprint与local_costmap保持一致
-      footprint: "[[0.36, 0.195], [0.36, -0.195], [-0.075, -0.195], [-0.075, 0.195]]"
+      footprint: "[[0.25, 0.20], [0.25, -0.20], [-0.25, -0.20], [-0.25, 0.20]]"
       resolution: 0.05
       track_unknown_space: true
       plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
@@ -324,36 +321,36 @@ planner_server:
     costmap_update_timeout: 1.0
 
 
-    GridBased:
-      plugin: "nav2_navfn_planner::NavfnPlanner"
-      tolerance: 0.5
+    # GridBased:
+    #   plugin: "nav2_navfn_planner::NavfnPlanner"
+    #   tolerance: 0.5
     
 
     
-    # SmacPlannerHybrid:
-    #   plugin: "nav2_smac_planner/SmacPlannerHybrid"
-    #   downsample_costmap: false
-    #   downsampling_factor: 1
-    #   tolerance: 0.25
-    #   allow_unknown: true
-    #   max_iterations: 1000000
-    #   max_on_approach_iterations: 1000
-    #   max_planning_time: 5.0  # 增加规划时间以支持复杂机动
-    #   motion_model_for_search: "REEDS_SHEPP"  # 支持前进/后退的模型
-    #   angle_quantization_bins: 72
-    #   analytic_expansion_ratio: 3.5
-    #   analytic_expansion_max_length: 3.0
-    #   minimum_turning_radius: 0.30
-    #   reverse_penalty: 2.0 #3  # 显著降低倒车惩罚，允许掉头时倒车
-    #   change_penalty: 0.3 #0.1  # 降低方向改变惩罚
-    #   non_straight_penalty: 1.0  # 降低非直线惩罚
-    #   cost_penalty: 2.0
-    #   retrospective_penalty: 0.015  # 降低回溯惩罚
-    #   lookup_table_size: 20.0
-    #   cache_obstacle_heuristic: false
-    #   debug_visualizations: true  # 启用调试可视化
-    #   use_quadratic_cost_penalty: False
-    #   downsample_obstacle_heuristic: True
+    GridBased:
+      plugin: "nav2_smac_planner::SmacPlannerHybrid"
+      downsample_costmap: false
+      downsampling_factor: 1
+      tolerance: 0.25
+      allow_unknown: true
+      max_iterations: 1000000
+      max_on_approach_iterations: 1000
+      max_planning_time: 5.0  #increase planning time to support complex manuavers
+      motion_model_for_search: "REEDS_SHEPP"  #supports forward/backward navigation
+      angle_quantization_bins: 72
+      analytic_expansion_ratio: 3.5
+      analytic_expansion_max_length: 3.0
+      minimum_turning_radius: 0.30
+      reverse_penalty: 1.0 #3  
+      change_penalty: 0.3 #0.1  #penalty for changing direction
+      non_straight_penalty: 1.0 # reduce non-linear penalty
+      cost_penalty: 2.0
+      retrospective_penalty: 0.015  #Reduce backtracking penalty
+      lookup_table_size: 20.0
+      cache_obstacle_heuristic: false
+      debug_visualizations: true # Debugging visualization
+      use_quadratic_cost_penalty: False
+      downsample_obstacle_heuristic: True
 
 
 
@@ -406,7 +403,7 @@ waypoint_follower:
     action_server_result_timeout: 900.0
     waypoint_task_executor_plugin: "wait_at_waypoint"
     wait_at_waypoint:
-      plugin: "nav2_waypoint_follower/WaitAtWaypoint"
+      plugin: "nav2_waypoint_follower::WaitAtWaypoint"
       enabled: True
       waypoint_pause_duration: 200
 
@@ -428,7 +425,7 @@ velocity_smoother:
 
 collision_monitor:
   ros__parameters:
-    enabled: True
+    enabled: false
     base_frame_id: "base_link"
     odom_frame_id: "odom"
     cmd_vel_in_topic: "cmd_vel_smoothed"
@@ -436,27 +433,29 @@ collision_monitor:
     transform_tolerance: 0.5
     source_timeout: 5.0
     stop_pub_timeout: 2.0
-    enable_stamped_cmd_vel: True # False for Jazzy or older by default
-    polygons: ["PolygonStop", "PolygonSlow"]
+
+    polygons: ["PolygonStop"]
+
     PolygonStop:
       type: "polygon"
       points: "[[0.4, 0.3], [0.4, -0.3], [0.0, -0.3], [0.0, 0.3]]"
       action_type: "stop"
-      min_points: 4  # max_points: 3 for Humble
+      min_points: 4
       visualize: True
-      polygon_pub_topic: "polygon_stop"
-    PolygonSlow:
-      type: "polygon"
-      points: "[[0.6, 0.4], [0.6, -0.4], [0.0, -0.4], [0.0, 0.4]]"
-      action_type: "slowdown"
-      min_points: 4  # max_points: 3 for Humble
-      slowdown_ratio: 0.3
-      visualize: True
-      polygon_pub_topic: "polygon_slowdown"
+
     observation_sources: ["scan"]
+
     scan:
       type: "scan"
-      topic: "scan"
+      topic: "/scan"
+
+docking_server:
+  ros__parameters:
+    controller_frequency: 50.0
+    dock_plugins: ["simple_dock"]
+
+    simple_dock:
+      plugin: "opennav_docking::SimpleChargingDock"
 
 
 

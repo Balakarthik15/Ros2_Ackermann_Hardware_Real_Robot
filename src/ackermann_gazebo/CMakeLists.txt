@@ -33,6 +33,8 @@ install(DIRECTORY
     launch
     config
     worlds
+    maps
+    urdf
   DESTINATION 
     share/${PROJECT_NAME}
 )
