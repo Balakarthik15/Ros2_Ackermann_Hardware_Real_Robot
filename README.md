@@ -377,7 +377,7 @@ ros2 launch slam_toolbox online_async_launch.py \
   slam_params_file:=src/ackermann_hardware/config/mapper_params_online_async.yaml
 
 # Terminal 3 — Teleop to drive and build map
-ros2 launch ackermann_teleop teleop.launch.py
+ros2 run ackermann_teleop keyboard_teleop
 
 # Terminal 4 — Save map when satisfied
 ros2 run nav2_map_server map_saver_cli -f ~/robot_ws/src/ackermann_hardware/map/robotics_lab

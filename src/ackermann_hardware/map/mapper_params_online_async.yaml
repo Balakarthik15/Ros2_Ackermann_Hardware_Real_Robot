@@ -20,8 +20,8 @@ slam_toolbox:
     # if you'd like to immediately start continuing a map at a given pose
     # or at the dock, but they are mutually exclusive, if pose is given
     # will use pose
-    #map_file_name: /home/pi/Ros2_Ackermann_Hardware_Real_Robot/src/ackermann_hardware/map/robotics_lab_2704_serial
-    #map_start_pose: [0.076, 0.085, 0.862]
+    map_file_name: /home/pi/Ros2_Ackermann_Hardware_Real_Robot/src/ackermann_hardware/map/robotics_lab_2804
+    map_start_pose: [-0.368, 3.26, 0.545]
     #map_start_at_dock: true
 
     debug_logging: false
